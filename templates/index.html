@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='drive.css')}}">
+    <script src="{{url_for('static', filename='drive.js')}}"></script>
+    <title>Sunet Drive</title>
+</head>
+<body>
+    <img src="{{url_for('static', filename='logo.png')}}" alt="Sunet Drive logo" />
+    <h1>Login to Sunet Drive</h1>
+    <input type="text" id="search_box" placeholder="Search for a site" onkeyup="filter_sites()"/>
+    <p>"Extern" is our catch all, if you can't find your institution, that is the one to use.</p>
+    <div class="wrapper">
+      <ul id="drive_sites">
+      {% for item in drive_sites %}
+        <li style="display: block" id="{{ drive_sites.index(item) }}"><a class="button" href="{{ item.href }}">{{ item.caption }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
+</body>
+</html>
