@@ -17,7 +17,6 @@ with open("/app/config.yaml", 'r') as fh:
         drive_sites.append({"href": href, "caption": caption})
 
 
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     user_info = {}
@@ -33,5 +32,9 @@ def index():
         # }
         user_info['displayname'] = json['displayname']
         user_info['domain'] = json['user_id'].split('@')[1]
-        user_info['site'] = json['service'].lstrip('https://').rstrip('/index.php/apps/user_saml/saml/metadata')
-    return render_template("index.html", drive_sites=drive_sites, domain=domain, user_info=user_info)
+        user_info['site'] = json['service'].lstrip('https://').rstrip(
+            '/index.php/apps/user_saml/saml/metadata')
+    return render_template("index.html",
+                           drive_sites=drive_sites,
+                           domain=domain,
+                           user_info=user_info)
