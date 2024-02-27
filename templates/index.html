@@ -9,6 +9,17 @@
 <body>
     <img src="{{url_for('static', filename='logo.png')}}" alt="Sunet Drive logo" />
     <h1>Login to Sunet Drive</h1>
+    {% if user_info -%}
+    {% set one_account = user_info.site.split('.')[0] + '.se' -%}
+    {% set one_site = user_info.site -%}
+    {% set two_account = user_info.domain -%}
+    {% set two_site = user_info.domain.rstrip('.se') + '.' + domain -%}
+
+    <p>Whoa there <b>{{ user_info.displayname }}</b>, that's a lot of accounts! It looks like you tried to log in with your <b>{{ user_info.domain }}</b> account, to <b>{{ user_info.site }}</b>.</p>
+    <p>Maybe you either wanted to login with your <b>{{ one_account }}</b> account on <a href="https://{{ one_site }}">{{ one_site }}</a>
+      or you wanted to login with your <b>{{two_account }}</b> account, on <a href="https://{{ two_site }}">{{ two_site }}</a>?</p>
+    <p>Try again, why don't you?</p>
+    {% endif %}
     <input type="text" id="search_box" placeholder="Search for a site" onkeyup="filter_sites()"/>
     <p>"Extern" is our catch all, if you can't find your institution, that is the one to use.</p>
     <div class="wrapper">
