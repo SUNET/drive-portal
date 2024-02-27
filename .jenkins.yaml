@@ -1,0 +1,15 @@
+---
+environment_variables:
+  PORTAL_VERSION: "0.0.1-1"
+git:
+  branch: main
+triggers:
+  cron: "@daily"
+clean_workspace: true
+builders:
+  - docker
+docker_name: drive/portal
+docker_tags:
+  - "${PORTAL_VERSION}"
+  - "latest"
+docker_no_cache: true

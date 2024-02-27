@@ -2,10 +2,11 @@ from flask import Flask, render_template, request
 import os
 import yaml
 
+app = Flask(__name__)
 drive_sites = []
-if not os.path.exists("config.yaml"):
-    raise Exception("config.yaml file not found")
-with open("config.yaml", 'r') as fh:
+if not os.path.exists("/app/config.yaml"):
+    raise Exception("/app/config.yaml file not found")
+with open("/app/config.yaml", 'r') as fh:
     yml = yaml.safe_load(fh)
     sites = yml["sites"]
     domain = yml["domain"]
@@ -15,7 +16,6 @@ with open("config.yaml", 'r') as fh:
         href = f"https://{caption}.{domain}/"
         drive_sites.append({"href": href, "caption": caption})
 
-app = Flask(__name__)
 
 
 @app.route('/', methods=['GET', 'POST'])
