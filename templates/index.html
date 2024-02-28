@@ -11,9 +11,24 @@
 <body>
   <img src="{{url_for('static', filename='logo.png')}}" alt="Sunet Drive logo" />
   {% if user_info %}
+  {% if user_info.direction == 'login' %}
+  <h1>Problem logging in to Sunet Drive</h1>
+  {% set one_account = user_info.site.split('.')[0] + '.se' -%}
+  {% set one_site = user_info.site -%}
+  {% set two_account = user_info.domain -%}
+  {% set two_site = user_info.domain.rstrip('.se') + '.' + domain -%}
+
+  <p>Whoa there <b>{{ user_info.displayname }}</b>, that's a lot of accounts! It looks like you tried to log in with
+    your <b>{{ user_info.domain }}</b> account, to <b>{{ user_info.site }}</b>.</p>
+  <p>Maybe you either wanted to login with your <b>{{ one_account }}</b> account on <a href="https://{{ one_site }}">
+    {{one_site}}</a> or you wanted to login with your <b>{{two_account}}</b> account, on 
+    <a href="https://{{two_site}}">{{two_site}}</a>?</p>
+  <p>Try again, why don't you?</p>
+  {% else %}
   <h1>Successful logout from Sunet Drive</h1>
-  <p>Thank you for using Sunet Drive. You can log back in to <a href="https://{{user_info.site }}">
-    {{user_info.site}}</a> or select another instance below.</p>
+  <p>Thank you for using Sunet Drive. You can log back in to <a href="https://{{ user_info.site }}">
+    {{ user_info.site}}</a> or select another instance below.</p>
+  {% endif %}
   {% else %}
   <h1>Login to Sunet Drive</h1>
   {% endif %}
