@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
+from urllib.parse import unquote
 import os
 import yaml
+import json
+import base64
 
 app = Flask(__name__)
 drive_sites = []
@@ -22,7 +25,7 @@ def index():
     user_info = {}
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json' and request.method == 'POST'):
-        json = request.get_json()
+        obj = request.get_json()
         # {
         #   "user_id": ...
         #   "displayname": ...
@@ -30,10 +33,19 @@ def index():
         #   "issuer": ...
         #   "service": ...
         # }
-        user_info['displayname'] = json['displayname']
-        user_info['domain'] = json['user_id'].split('@')[1]
-        user_info['site'] = json['service'].lstrip('https://').rstrip(
+        user_info['displayname'] = obj['displayname']
+        user_info['domain'] = obj['user_id'].split('@')[1]
+        user_info['site'] = obj['service'].removeprefix('https://').removesuffix(
             '/index.php/apps/user_saml/saml/metadata')
+    elif request.method == 'GET':
+        url_encoded = request.args.get('context')
+        if url_encoded:
+            base64_decoded = base64.b64decode(unquote(url_encoded))
+            obj = json.loads(base64_decoded)
+            user_info['displayname'] = obj['displayname']
+            user_info['domain'] = obj['user_id'].split('@')[1]
+            user_info['site'] = obj['service'].removeprefix('https://').removesuffix(
+                '/index.php/apps/user_saml/saml/metadata')
     return render_template("index.html",
                            drive_sites=drive_sites,
                            domain=domain,
