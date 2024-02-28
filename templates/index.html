@@ -1,33 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <link rel="stylesheet" href="{{url_for('static', filename='drive.css')}}">
-    <script src="{{url_for('static', filename='drive.js')}}"></script>
-    <title>Sunet Drive</title>
-</head>
-<body>
-    <img src="{{url_for('static', filename='logo.png')}}" alt="Sunet Drive logo" />
-    <h1>Login to Sunet Drive</h1>
-    {% if user_info -%}
-    {% set one_account = user_info.site.split('.')[0] + '.se' -%}
-    {% set one_site = user_info.site -%}
-    {% set two_account = user_info.domain -%}
-    {% set two_site = user_info.domain.rstrip('.se') + '.' + domain -%}
 
-    <p>Whoa there <b>{{ user_info.displayname }}</b>, that's a lot of accounts! It looks like you tried to log in with your <b>{{ user_info.domain }}</b> account, to <b>{{ user_info.site }}</b>.</p>
-    <p>Maybe you either wanted to login with your <b>{{ one_account }}</b> account on <a href="https://{{ one_site }}">{{ one_site }}</a>
-      or you wanted to login with your <b>{{two_account }}</b> account, on <a href="https://{{ two_site }}">{{ two_site }}</a>?</p>
-    <p>Try again, why don't you?</p>
-    {% endif %}
-    <input type="text" id="search_box" placeholder="Search for a site" onkeyup="filter_sites()"/>
-    <p>"Extern" is our catch all, if you can't find your institution, that is the one to use.</p>
-    <div class="wrapper">
-      <ul id="drive_sites">
+<head>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='drive.css')}}">
+  <script src="{{url_for('static', filename='drive.js')}}"></script>
+  <title>Sunet Drive</title>
+</head>
+
+<body>
+  <img src="{{url_for('static', filename='logo.png')}}" alt="Sunet Drive logo" />
+  {% if user_info %}
+  {% if user_info.direction == 'login' %}
+  <h1>Problem logging in to Sunet Drive</h1>
+  {% set one_account = user_info.site.split('.')[0] + '.se' -%}
+  {% set one_site = user_info.site -%}
+  {% set two_account = user_info.domain -%}
+  {% set two_site = user_info.domain.rstrip('.se') + '.' + domain -%}
+
+  <p>Whoa there <b>{{ user_info.displayname }}</b>, that's a lot of accounts! It looks like you tried to log in with
+    your <b>{{ user_info.domain }}</b> account, to <b>{{ user_info.site }}</b>.</p>
+  <p>Maybe you either wanted to login with your <b>{{ one_account }}</b> account on <a href="https://{{ one_site }}">
+    {{one_site}}</a> or you wanted to login with your <b>{{two_account}}</b> account, on 
+    <a href="https://{{two_site}}">{{two_site}}</a>?</p>
+  <p>Try again, why don't you?</p>
+  {% else %}
+  <h1>Successful logout from Sunet Drive</h1>
+  <p>Thank you for using Sunet Drive. You can log back in to <a href="https://{{ user_info.site }}">
+    {{ user_info.site}}</a> or select another instance below.</p>
+  {% endif %}
+  {% else %}
+  <h1>Login to Sunet Drive</h1>
+  {% endif %}
+  <input type="text" id="search_box" placeholder="Search for a site" onkeyup="filter_sites()" />
+  <p>"<b>Extern</b>" is our catch all, if you can't find your institution, that is the one to use.</p>
+  <div class="wrapper">
+    <ul id="drive_sites">
       {% for item in drive_sites %}
-        <li style="display: block" id="{{ drive_sites.index(item) }}"><a class="button" href="{{ item.href }}">{{ item.caption }}</a></li>
+      <li style="display: block" id="{{ drive_sites.index(item) }}"><a class="button" href="{{ item.href }}">
+      {{item.caption }}</a></li>
       {% endfor %}
-      </ul>
-    </div>
+    </ul>
+  </div>
 </body>
+
 </html>

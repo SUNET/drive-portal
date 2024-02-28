@@ -33,19 +33,25 @@ def index():
         #   "issuer": ...
         #   "service": ...
         # }
+        user_info['direction'] = 'login'
         user_info['displayname'] = obj['displayname']
         user_info['domain'] = obj['user_id'].split('@')[1]
         user_info['site'] = obj['service'].removeprefix('https://').removesuffix(
             '/index.php/apps/user_saml/saml/metadata')
     elif request.method == 'GET':
         url_encoded = request.args.get('context')
+        relay_state = request.args.get('RelayState')
         if url_encoded:
+            user_info['direction'] = 'login'
             base64_decoded = base64.b64decode(unquote(url_encoded))
             obj = json.loads(base64_decoded)
             user_info['displayname'] = obj['displayname']
             user_info['domain'] = obj['user_id'].split('@')[1]
             user_info['site'] = obj['service'].removeprefix('https://').removesuffix(
                 '/index.php/apps/user_saml/saml/metadata')
+        elif relay_state:
+            user_info['direction'] = 'logout'
+            user_info['site'] = relay_state.removeprefix('https://').removesuffix('/index.php/apps/user_saml/saml/sls')
     return render_template("index.html",
                            drive_sites=drive_sites,
                            domain=domain,
