@@ -33,15 +33,20 @@
   <h1>Login to Sunet Drive</h1>
   {% endif %}
   <input type="text" id="search_box" placeholder="Search for a site" onkeyup="filter_sites()" />
-  <p>"<b>Extern</b>" is our catch all, if you can't find your institution, that is the one to use.</p>
+  <span class="tooltip">
   <div class="wrapper">
-    <ul id="drive_sites">
-      {% for item in drive_sites %}
-      <li style="display: block" id="{{ drive_sites.index(item) }}"><a class="button" href="{{ item.href }}">
-      {{item.caption }}</a></li>
-      {% endfor %}
-    </ul>
+    <label for="direct_login">Direct login</label>
+    <input type="checkbox" id="direct_login" name="direct" value="direct" onchange="use_direct()"/>
   </div>
+    <span class="tooltiptext notice">Toggle this to login with local account, if you don't know what that means, leave it unchecked.</span>
+  </span>
+  <p>"<b>Extern</b>" is our catch all, if you can't find your institution, that is the one to use.</p>
+  <ul id="drive_sites">
+    {% for item in drive_sites %}
+    <li style="display: block" id="{{ drive_sites.index(item) }}"><a class="button" href="{{ item.href }}">
+    {{item.caption }}</a></li>
+    {% endfor %}
+  </ul>
 </body>
 
 </html>
