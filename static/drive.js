@@ -23,9 +23,9 @@ function filter_sites() {
   var extern_id = 0;
   for (var i = 0; i < items.length; ++i) {
     var item = items[i];
-    var item_text = item.textcontent || item.innertext;
-    item_text = item_text.tolowercase();
-    if (item_text.indexof(text.tolowercase()) > -1) {
+    var item_text = item.textContent || item.innerText;
+    item_text = item_text.toLowerCase();
+    if (item_text.indexOf(text.toLowerCase()) > -1) {
       item.style.display = "block";
       visible = true;
     } else {
