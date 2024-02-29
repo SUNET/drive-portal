@@ -12,39 +12,42 @@
   <img src="{{url_for('static', filename='logo.png')}}" alt="Sunet Drive logo" />
   {% if user_info %}
   {% if user_info.direction == 'login' %}
-  <h1>Problem logging in to Sunet Drive</h1>
+  <h1>{{i18n.header.problem}}</h1>
   {% set one_account = user_info.site.split('.')[0] + '.se' -%}
   {% set one_site = user_info.site -%}
   {% set two_account = user_info.domain -%}
   {% set two_site = user_info.domain.rstrip('.se') + '.' + domain -%}
-
-  <p>Whoa there <b>{{ user_info.displayname }}</b>, that's a lot of accounts! It looks like you tried to log in with
-    your <b>{{ user_info.domain }}</b> account, to <b>{{ user_info.site }}</b>.</p>
-  <p>Maybe you either wanted to login with your <b>{{ one_account }}</b> account on <a href="https://{{ one_site }}">
-    {{one_site}}</a> or you wanted to login with your <b>{{two_account}}</b> account, on 
-    <a href="https://{{two_site}}">{{two_site}}</a>?</p>
-  <p>Try again, why don't you?</p>
+  <p>{{i18n.text.problem.paragraph_one.before_display_name}}<b>{{user_info.displayname}}</b
+    >{{i18n.text.problem.paragraph_one.before_idp_name}}<b>{{user_info.domain}}</b
+    >{{i18n.text.problem.paragraph_one.before_site_name}}<b>{{user_info.site }}</b
+    >{{i18n.text.problem.paragraph_one.after_site_name}}</p>
+  <p>{{i18n.text.problem.paragraph_two.before_option_one}}<b>{{one_account}}</b
+    >{{i18n.text.problem.paragraph_two.before_site_one}}<a href="https://{{ one_site }}">{{one_site}}</a
+    >{{i18n.text.problem.paragraph_two.before_option_two}}<b>{{two_account}}</b
+    >{{i18n.text.problem.paragraph_two.before_site_two}}<a href="https://{{two_site}}">{{two_site}}</a
+    >{{i18n.text.problem.after_site_two}}</p>
+  <p>{{i18n.text.problem.paragraph_three.full_text}}</p>
   {% else %}
-  <h1>Successful logout from Sunet Drive</h1>
-  <p>Thank you for using Sunet Drive. You can log back in to <a href="https://{{ user_info.site }}">
-    {{ user_info.site}}</a> or select another instance below.</p>
+  <h1>{{i18n.header.logout}}</h1>
+  <p>{{i18n.text.success.paragraph_one.before_site_name}}<a href="https://{{ user_info.site }}">
+      {{ user_info.site}}</a>{{i18n.text.success.after_site_name}}</p>
   {% endif %}
   {% else %}
-  <h1>Login to Sunet Drive</h1>
+  <h1>{{i18n.header.login}}</h1>
   {% endif %}
-  <input type="text" id="search_box" placeholder="Search for a site" onkeyup="filter_sites()" />
+  <input type="text" id="search_box" placeholder="{{i18n.search_placeholder}}" onkeyup="filter_sites()" />
   <span class="tooltip">
-  <div class="wrapper">
-    <label for="direct_login">Direct login</label>
-    <input type="checkbox" id="direct_login" name="direct" value="direct" onchange="use_direct()"/>
-  </div>
-    <span class="tooltiptext notice">Toggle this to login with local account, if you don't know what that means, leave it unchecked.</span>
+    <div class="wrapper">
+      <label for="direct_login">{{i18n.direct_login}}</label>
+      <input type="checkbox" id="direct_login" name="direct" value="direct" onchange="use_direct()" />
+    </div>
+    <span class="tooltiptext notice">{{i18n.tooltip_notice}}</span>
   </span>
-  <p>"<b>Extern</b>" is our catch all, if you can't find your institution, that is the one to use.</p>
+  <p>"<b>Extern</b>" {{i18n.extern_info}}</p>
   <ul id="drive_sites">
     {% for item in drive_sites %}
     <li style="display: block" id="{{ drive_sites.index(item) }}"><a class="button" href="{{ item.href }}">
-    {{item.caption }}</a></li>
+        {{item.caption }}</a></li>
     {% endfor %}
   </ul>
 </body>

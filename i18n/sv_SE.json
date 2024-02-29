@@ -1,0 +1,37 @@
+{
+  "header": {
+    "problem": "Problem med att logga in i Sunet Drive",
+    "logout": "Utloggning från Sunet Drive genomförd",
+    "login": "Logga in i Sunet Drive"
+  },
+  "text": {
+    "problem": {
+      "paragraph_one": {
+        "before_display_name": "Ojoj, ",
+        "before_idp_name": ", det där var nog ett konto för mycket! Det ser ut som att du försökte logga in med ditt ",
+        "before_site_name": " konto i ",
+        "after_site_name": "."
+      },
+      "paragraph_two": {
+        "before_option_one": "Kanske ville du antingen logga in med ditt ",
+        "before_site_one": " konto i ",
+        "before_option_two": ", eller så ville du logga in med ditt ",
+        "before_site_two": " konto i ",
+        "after_site_two": "?"
+      },
+      "paragraph_three": {
+        "full_text": "Prova en gång till, kanske?"
+      }
+    },
+    "success": {
+      "paragraph_one": {
+        "before_site_name": "Tack för att du använder Sunet Drive. Du kan logga in igen på ",
+        "after_site_name": " eller välja en annan instans nedan."
+      }
+    }
+  },
+  "direct_login": "Direktinloggning",
+  "extern_info": "är våran instans för dem som inte hör hemma någon annanstans. Om du inte hittar din institution, är det den du ska använda.",
+  "search_placeholder": "Sök efter en instans",
+  "tooltip_notice": "Klicka här för att logga in med ett lokalt konto. Om du inte vet vad det innebär ska du nog lämna den urklickad."
+}

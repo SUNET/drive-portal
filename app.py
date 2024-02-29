@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request
 from urllib.parse import unquote
 import os
+import glob
 import yaml
 import json
 import base64
 
 app = Flask(__name__)
+
+# Get sites from config
 drive_sites = []
 if not os.path.exists("/app/config.yaml"):
     raise Exception("/app/config.yaml file not found")
@@ -19,9 +22,21 @@ with open("/app/config.yaml", 'r') as fh:
         href = f"https://{caption}.{domain}/"
         drive_sites.append({"href": href, "caption": caption})
 
+# get languages from files
+language_files = glob.glob("i18n/*.json")
+languages = {}
+for lang in language_files:
+    filename = lang.split('/')
+    lang_code = filename[1].split('.')[0]
+    with open(lang, 'r', encoding='utf8') as file:
+        languages[lang_code] = json.loads(file.read())
+supported_languages = list(languages.keys())
+
 
 @app.route('/', methods=['GET'])
 def index():
+    user_lang = request.accept_languages.best_match(supported_languages) or 'sv_SE'
+    i18n = languages[user_lang]
     user_info = {}
     url_encoded = request.args.get('context')
     relay_state = request.args.get('RelayState')
@@ -31,12 +46,14 @@ def index():
         obj = json.loads(base64_decoded)
         user_info['displayname'] = obj['displayname']
         user_info['domain'] = obj['user_id'].split('@')[1]
-        user_info['site'] = obj['service'].removeprefix('https://').removesuffix(
-            '/index.php/apps/user_saml/saml/metadata')
+        user_info['site'] = obj['service'].removeprefix(
+            'https://').removesuffix('/index.php/apps/user_saml/saml/metadata')
     elif relay_state:
         user_info['direction'] = 'logout'
-        user_info['site'] = relay_state.removeprefix('https://').removesuffix('/index.php/apps/user_saml/saml/sls')
+        user_info['site'] = relay_state.removeprefix('https://').removesuffix(
+            '/index.php/apps/user_saml/saml/sls')
     return render_template("index.html",
                            drive_sites=drive_sites,
                            domain=domain,
+                           i18n=i18n,
                            user_info=user_info)

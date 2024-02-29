@@ -1,0 +1,37 @@
+{
+  "header": {
+    "problem": "Problem logging in to Sunet Drive",
+    "logout": "Successful logout from Sunet Drive",
+    "login": "Login to Sunet Drive"
+  },
+  "text": {
+    "problem": {
+      "paragraph_one": {
+        "before_display_name": "Whoa there ",
+        "before_idp_name": ", that's a lot of accounts! It looks like you tried to log in with your ",
+        "before_site_name": " account, to ",
+        "after_site_name": "."
+      },
+      "paragraph_two": {
+        "before_option_one": "Maybe you either wanted to login with your ",
+        "before_site_one": " account on ",
+        "before_option_two": " or you wanted to login with your ",
+        "before_site_two": " account, on ",
+        "after_site_two": "?"
+      },
+      "paragraph_three": {
+        "full_text": "Try again, why don't you?"
+      }
+    },
+    "success": {
+      "paragraph_one": {
+        "before_site_name": "Thank you for using Sunet Drive. You can log back in to ",
+        "after_site_name": " or select another instance below."
+      }
+    }
+  },
+  "direct_login": "Direct login",
+  "extern_info": "is our catch all, if you can't find your institution, that is the one to use.",
+  "search_placeholder": "Search for a site",
+  "tooltip_notice": "Toggle this to login with local account, if you don't know what that means, leave it unchecked."
+}
