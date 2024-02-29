@@ -31,7 +31,7 @@ function filter_sites() {
     } else {
       item.style.display = "none";
     }
-    if (item_text.indexof('extern') > -1) {
+    if (item_text.indexOf('extern') > -1) {
       extern_id = i;
     }
   }
