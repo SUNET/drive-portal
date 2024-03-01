@@ -42,6 +42,7 @@ def index():
             "site": site,
             "external_url": external_url
         })
+    drive_sites = sorted(drive_sites, key=lambda x: x['caption'])
     user_info = {}
     url_encoded = request.args.get('context')
     relay_state = request.args.get('RelayState')
