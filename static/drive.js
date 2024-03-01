@@ -22,16 +22,21 @@ function filter_sites() {
   var visible = false;
   var extern_id = 0;
   for (var i = 0; i < items.length; ++i) {
-    var item = items[i];
-    var item_text = item.textContent || item.innerText;
+    let link = items[i].getElementsByTagName("a")[0];
+    var item_text = link.innerText;
     item_text = item_text.toLowerCase();
-    if (item_text.indexOf(text.toLowerCase()) > -1) {
-      item.style.display = "block";
+    var shortname = link.dataset.shortname;
+    var external_url = link.dataset.externalurl;
+    var condition = ((item_text.indexOf(text.toLowerCase()) > -1)
+      || (shortname.indexOf(text.toLowerCase()) > -1)
+      || (external_url.indexOf(text.toLowerCase()) > -1));
+    if (condition) {
+      items[i].style.display = "block";
       visible = true;
     } else {
-      item.style.display = "none";
+      items[i].style.display = "none";
     }
-    if (item_text.indexOf('extern') > -1) {
+    if (shortname.indexOf('extern') > -1) {
       extern_id = i;
     }
   }

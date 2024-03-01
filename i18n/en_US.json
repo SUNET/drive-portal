@@ -33,5 +33,277 @@
   "direct_login": "Direct login",
   "extern_info": "is our catch all, if you can't find your institution, that is the one to use.",
   "search_placeholder": "Search for a site",
-  "tooltip_notice": "Toggle this to login with local account, if you don't know what that means, leave it unchecked."
+  "tooltip_notice": "Toggle this to login with local account, if you don't know what that means, leave it unchecked.",
+  "sites": [
+    {
+      "full_name": "Antagning",
+      "short_name": "antagning",
+      "domain": "antagning.se"
+    },
+    {
+      "full_name": "Blekinge Institute of Technology",
+      "short_name": "bth",
+      "domain": "bth.se"
+    },
+    {
+      "full_name": "Chalmers University of Technology",
+      "short_name": "chalmers",
+      "domain": "chalmers.se"
+    },
+    {
+      "full_name": "Dalarna University",
+      "short_name": "du",
+      "domain": "du.se"
+    },
+    {
+      "full_name": "Marie Cederschiöld University",
+      "short_name": "esh",
+      "domain": "mchs.se"
+    },
+    {
+      "full_name": "Extern",
+      "short_name": "extern",
+      "domain": "eduid.se"
+    },
+    {
+      "full_name": "Swedish Defence University",
+      "short_name": "fhs",
+      "domain": "fhs.se"
+    },
+    {
+      "full_name": "The Swedish School of Sport and Health Sciences",
+      "short_name": "gih",
+      "domain": "gih.se"
+    },
+    {
+      "full_name": "University of Gothenburg",
+      "short_name": "gu",
+      "domain": "gu.se"
+    },
+    {
+      "full_name": "University of Borås",
+      "short_name": "hb",
+      "domain": "hb.se"
+    },
+    {
+      "full_name": "Halmstad University",
+      "short_name": "hh",
+      "domain": "hh.se"
+    },
+    {
+      "full_name": "Stockholm School of Economics",
+      "short_name": "hhs",
+      "domain": "hhs.se"
+    },
+    {
+      "full_name": "University of Gävle",
+      "short_name": "hig",
+      "domain": "hig.se"
+    },
+    {
+      "full_name": "University of Skövde",
+      "short_name": "his",
+      "domain": "his.se"
+    },
+    {
+      "full_name": "Jönköping University",
+      "short_name": "hj",
+      "domain": "ju.se"
+    },
+    {
+      "full_name": "Kristianstad University",
+      "short_name": "hkr",
+      "domain": "hkr.se"
+    },
+    {
+      "full_name": "University West",
+      "short_name": "hv",
+      "domain": "hv.se"
+    },
+    {
+      "full_name": "Swedish Institute of Space Physics",
+      "short_name": "irf",
+      "domain": "irf.se"
+    },
+    {
+      "full_name": "Karlstad University",
+      "short_name": "kau",
+      "domain": "kau.se"
+    },
+    {
+      "full_name": "National Library of Sweden",
+      "short_name": "kb",
+      "domain": "kb.se"
+    },
+    {
+      "full_name": "Karolinska Institutet",
+      "short_name": "ki",
+      "domain": "ki.se"
+    },
+    {
+      "full_name": "Royal Institute of Art",
+      "short_name": "kkh",
+      "domain": "kkh.se"
+    },
+    {
+      "full_name": "Royal College of Music",
+      "short_name": "kmh",
+      "domain": "kmh.se"
+    },
+    {
+      "full_name": "Konstfack",
+      "short_name": "konstfack",
+      "domain": "www.konstfack.se"
+    },
+    {
+      "full_name": "Royal Institute of Technology",
+      "short_name": "kth",
+      "domain": "kth.se"
+    },
+    {
+      "full_name": "Royal Swedish Academy of Sciences",
+      "short_name": "kva",
+      "domain": "kva.se"
+    },
+    {
+      "full_name": "Linköping University",
+      "short_name": "liu",
+      "domain": "liu.se"
+    },
+    {
+      "full_name": "Linnaeus University",
+      "short_name": "lnu",
+      "domain": "lnu.se"
+    },
+    {
+      "full_name": "Luleå University of Technology",
+      "short_name": "ltu",
+      "domain": "ltu.se"
+    },
+    {
+      "full_name": "Lund University",
+      "short_name": "lu",
+      "domain": "lu.se"
+    },
+    {
+      "full_name": "Malmö University",
+      "short_name": "mau",
+      "domain": "mau.se"
+    },
+    {
+      "full_name": "Mälardalen University",
+      "short_name": "mdu",
+      "domain": "mdu.se"
+    },
+    {
+      "full_name": "Mid Sweden University",
+      "short_name": "miun",
+      "domain": "miun.se"
+    },
+    {
+      "full_name": "NORDUnet",
+      "short_name": "nordunet",
+      "domain": "nordu.net"
+    },
+    {
+      "full_name": "Swedish Museum of Natural History",
+      "short_name": "nrm",
+      "domain": "nrm.se"
+    },
+    {
+      "full_name": "Örebro University",
+      "short_name": "oru",
+      "domain": "oru.se"
+    },
+    {
+      "full_name": "Swedish Red Cross University",
+      "short_name": "rkh",
+      "domain": "rkh.se"
+    },
+    {
+      "full_name": "SciLifeLab",
+      "short_name": "scilifelab",
+      "domain": "scilifelab.se"
+    },
+    {
+      "full_name": "Sophiahemmet University",
+      "short_name": "shh",
+      "domain": "shh.se"
+    },
+    {
+      "full_name": "Research Institutes of Sweden - SICS",
+      "short_name": "sics",
+      "domain": "ri.se"
+    },
+    {
+      "full_name": "Swedish University of Agricultural Sciences",
+      "short_name": "slu",
+      "domain": "slu.se"
+    },
+    {
+      "full_name": "Swedish Meteorological and Hydrological Institute",
+      "short_name": "smhi",
+      "domain": "smhi.se"
+    },
+    {
+      "full_name": "Research Institutes of Sweden - SP",
+      "short_name": "sp",
+      "domain": "ri.se"
+    },
+    {
+      "full_name": "Stockholm University",
+      "short_name": "su",
+      "domain": "su.se"
+    },
+    {
+      "full_name": "Swedish University Computer Network",
+      "short_name": "sunet",
+      "domain": "sunet.se"
+    },
+    {
+      "full_name": "Södertörn University",
+      "short_name": "suni",
+      "domain": "sh.se"
+    },
+    {
+      "full_name": "Swedish Academic Identity Federation",
+      "short_name": "swamid",
+      "domain": "swamid.se"
+    },
+    {
+      "full_name": "University College Stockholm",
+      "short_name": "ths",
+      "domain": "ehs.se"
+    },
+    {
+      "full_name": "Swedish Council for Higher Education",
+      "short_name": "uhr",
+      "domain": "uhr.se"
+    },
+    {
+      "full_name": "Umeå University",
+      "short_name": "umu",
+      "domain": "umu.se"
+    },
+    {
+      "full_name": "Stockholm University of the Arts",
+      "short_name": "uniarts",
+      "domain": "uniarts.se"
+    },
+    {
+      "full_name": "Uppsala University",
+      "short_name": "uu",
+      "domain": "uu.se"
+    },
+    {
+      "full_name": "Vinnova",
+      "short_name": "vinnova",
+      "domain": "www.vinnova.se"
+    },
+    {
+      "full_name": "Swedish Research Council",
+      "short_name": "vr",
+      "domain": "vr.se"
+    }
+  ]
 }

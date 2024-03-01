@@ -8,19 +8,11 @@ import base64
 
 app = Flask(__name__)
 
-# Get sites from config
-drive_sites = []
 if not os.path.exists("/app/config.yaml"):
     raise Exception("/app/config.yaml file not found")
 with open("/app/config.yaml", 'r') as fh:
     yml = yaml.safe_load(fh)
-    sites = yml["sites"]
     domain = yml["domain"]
-
-    for site in sorted(sites):
-        caption = f"{site}"
-        href = f"https://{caption}.{domain}/"
-        drive_sites.append({"href": href, "caption": caption})
 
 # get languages from files
 language_files = glob.glob("i18n/*.json")
@@ -35,8 +27,21 @@ supported_languages = list(languages.keys())
 
 @app.route('/', methods=['GET'])
 def index():
-    user_lang = request.accept_languages.best_match(supported_languages) or 'sv_SE'
+    user_lang = request.accept_languages.best_match(
+        supported_languages) or 'sv_SE'
     i18n = languages[user_lang]
+    drive_sites = []
+    for site_dict in i18n["sites"]:
+        site = site_dict['short_name']
+        caption = site_dict['full_name']
+        external_url = site_dict['domain']
+        href = f"https://{site}.{domain}/"
+        drive_sites.append({
+            "href": href,
+            "caption": caption,
+            "site": site,
+            "external_url": external_url
+        })
     user_info = {}
     url_encoded = request.args.get('context')
     relay_state = request.args.get('RelayState')

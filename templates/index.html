@@ -46,7 +46,7 @@
   <p>"<b>Extern</b>" {{i18n.extern_info}}</p>
   <ul id="drive_sites">
     {% for item in drive_sites %}
-    <li style="display: block" id="{{ drive_sites.index(item) }}"><a class="button" href="{{ item.href }}">
+      <li style="display: block" id="{{ drive_sites.index(item) }}"><a class="button" href="{{ item.href }}" data-shortname="{{ item.site }}" data-externalurl="{{item.external_url}}">
         {{item.caption }}</a></li>
     {% endfor %}
   </ul>
