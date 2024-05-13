@@ -1,55 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <link rel="stylesheet" href="{{url_for('static', filename='simple.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='drive.css')}}" />
+    <script src="{{url_for('static', filename='drive.js')}}"></script>
+    <title>Sunet Drive</title>
+  </head>
 
-<head>
-  <link rel="stylesheet" href="{{url_for('static', filename='simple.min.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='drive.css')}}">
-  <script src="{{url_for('static', filename='drive.js')}}"></script>
-  <title>Sunet Drive</title>
-</head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <img src="{{url_for('static', filename='logo.png')}}" alt="Sunet Drive logo" class="logo" />
+      </header>
 
-<body>
-  <img src="{{url_for('static', filename='logo.png')}}" alt="Sunet Drive logo" />
-  {% if user_info %}
-  {% if user_info.direction == 'login' %}
-  <h1>{{i18n.header.problem}}</h1>
-  {% set one_account = user_info.site.split('.')[0] + '.se' -%}
-  {% set one_site = user_info.site -%}
-  {% set two_account = user_info.domain -%}
-  {% set two_site = user_info.domain.rstrip('.se') + '.' + domain -%}
-  <p>{{i18n.text.problem.paragraph_one.before_display_name}}<b>{{user_info.displayname}}</b
-    >{{i18n.text.problem.paragraph_one.before_idp_name}}<b>{{user_info.domain}}</b
-    >{{i18n.text.problem.paragraph_one.before_site_name}}<b>{{user_info.site }}</b
-    >{{i18n.text.problem.paragraph_one.after_site_name}}</p>
-  <p>{{i18n.text.problem.paragraph_two.before_option_one}}<b>{{one_account}}</b
-    >{{i18n.text.problem.paragraph_two.before_site_one}}<a href="https://{{ one_site }}">{{one_site}}</a
-    >{{i18n.text.problem.paragraph_two.before_option_two}}<b>{{two_account}}</b
-    >{{i18n.text.problem.paragraph_two.before_site_two}}<a href="https://{{two_site}}">{{two_site}}</a
-    >{{i18n.text.problem.after_site_two}}</p>
-  <p>{{i18n.text.problem.paragraph_three.full_text}}</p>
-  {% else %}
-  <h1>{{i18n.header.logout}}</h1>
-  <p>{{i18n.text.success.paragraph_one.before_site_name}}<a href="https://{{ user_info.site }}">
-      {{ user_info.site}}</a>{{i18n.text.success.paragraph_one.after_site_name}}</p>
-  {% endif %}
-  {% else %}
-  <h1>{{i18n.header.login}}</h1>
-  {% endif %}
-  <input type="text" id="search_box" placeholder="{{i18n.search_placeholder}}" onkeyup="filter_sites()" />
-  <span class="tooltip">
-    <div class="wrapper">
-      <label for="direct_login">{{i18n.direct_login}}</label>
-      <input type="checkbox" id="direct_login" name="direct" value="direct" onchange="use_direct()" />
+      <!-- Content -->
+      <div class="content">
+        <form>
+          <!-- Error heading, error text -->
+          {% if user_info %} {% if user_info.direction == 'login' %}
+          <h1>{{i18n.header.problem}}</h1>
+
+          {% set one_account = user_info.site.split('.')[0] + '.se' -%} {% set one_site = user_info.site -%} {% set
+          two_account = user_info.domain -%} {% set two_site = user_info.domain.rstrip('.se') + '.' + domain -%}
+          <p>
+            {{i18n.text.problem.paragraph_one.before_display_name}}<b>{{user_info.displayname}}</b>{{i18n.text.problem.paragraph_one.before_idp_name}}<b>{{user_info.domain}}</b>{{i18n.text.problem.paragraph_one.before_site_name}}<b
+              >{{user_info.site }}</b
+            >{{i18n.text.problem.paragraph_one.after_site_name}}
+          </p>
+          <p>
+            {{i18n.text.problem.paragraph_two.before_option_one}}<b>{{one_account}}</b>{{i18n.text.problem.paragraph_two.before_site_one}}<a
+              href="https://{{ one_site }}"
+              >{{one_site}}</a
+            >{{i18n.text.problem.paragraph_two.before_option_two}}<b>{{two_account}}</b>{{i18n.text.problem.paragraph_two.before_site_two}}<a
+              href="https://{{two_site}}"
+              >{{two_site}}</a
+            >{{i18n.text.problem.after_site_two}}
+          </p>
+          <p>{{i18n.text.problem.paragraph_three.full_text}}</p>
+          {% else %}
+          <!-- Logout heading, logout text -->
+          <h1>{{i18n.header.logout}}</h1>
+          <p>
+            {{i18n.text.success.paragraph_one.before_site_name}}<a href="https://{{ user_info.site }}">
+              {{ user_info.site}}</a
+            >{{i18n.text.success.paragraph_one.after_site_name}}
+          </p>
+          {% endif %} {% else %}
+          <!-- Login heading, login text -->
+          <h1>{{i18n.header.login}}</h1>
+          <p>
+            {{i18n.instruction}} <br />
+            {{i18n.extern_info}}"<b>Extern</b>".
+          </p>
+
+          {% endif %}
+
+          <!-- Search -->
+          <label for="search_box">
+            {{i18n.search_label}}
+            <input type="text" id="search_box" placeholder="{{i18n.search_placeholder}}" onkeyup="filter_sites()"
+          /></label>
+
+          <!-- Drop down -->
+          <label for="drive_sites_select">
+            {{i18n.select_label}}
+            <select id="drive_sites_select">
+              <option disabled selected value>{{i18n.select_placeholder}}</option>
+              {% for item in drive_sites %}
+              <option style="display: block" id="{{ drive_sites.index(item) }}">
+                <a
+                  class="button"
+                  href="{{ item.href }}"
+                  data-shortname="{{ item.site }}"
+                  data-externalurl="{{item.external_url}}"
+                >
+                  {{item.caption }}</a
+                >
+              </option>
+              {% endfor %}
+            </select>
+          </label>
+
+          <!-- <label for="drive_sites">
+            {{i18n.select_label}}
+            <ul id="drive_sites">
+              <li style="display: block" id="{{ drive_sites.index(item) }}">
+                <a
+                  class="button"
+                  href="{{ item.href }}"
+                  data-shortname="{{ item.site }}"
+                  data-externalurl="{{item.external_url}}"
+                >
+                  {{item.caption }}</a
+                >
+              </li>
+              {% endfor %}
+            </ul>
+          </label> -->
+
+          <!-- Direct login -->
+          <span class="tooltip">
+            <div class="wrapper">
+              <label for="direct_login"
+                >{{i18n.direct_login}}
+                <input type="checkbox" id="direct_login" name="direct" value="direct" onchange="use_direct()" />
+              </label>
+            </div>
+            <span class="tooltiptext notice">{{i18n.tooltip_notice}}</span>
+          </span>
+        </form>
+      </div>
     </div>
-    <span class="tooltiptext notice">{{i18n.tooltip_notice}}</span>
-  </span>
-  <p>"<b>Extern</b>" {{i18n.extern_info}}</p>
-  <ul id="drive_sites">
-    {% for item in drive_sites %}
-      <li style="display: block" id="{{ drive_sites.index(item) }}"><a class="button" href="{{ item.href }}" data-shortname="{{ item.site }}" data-externalurl="{{item.external_url}}">
-        {{item.caption }}</a></li>
-    {% endfor %}
-  </ul>
-</body>
-
+  </body>
 </html>

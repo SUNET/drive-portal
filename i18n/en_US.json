@@ -30,10 +30,14 @@
       }
     }
   },
-  "direct_login": "Direct login",
-  "extern_info": "is our catch all, if you can't find your institution, that is the one to use.",
-  "search_placeholder": "Search for a site",
-  "tooltip_notice": "Toggle this to login with local account, if you don't know what that means, leave it unchecked.",
+  "direct_login": "Direct login, only with local account",
+  "extern_info": "If you can't find your institution, use ",
+  "search_label": "Find your institution",
+  "search_placeholder": "Search for site",
+  "tooltip_notice": "If unsure, leave it unchecked",
+  "instruction": "Log in to Sunet Drive by using the search field or choosing your institution from the list below.",
+  "select_label": "Choose your institution",
+  "select_placeholder": "Select site",
   "sites": [
     {
       "full_name": "Antagning",

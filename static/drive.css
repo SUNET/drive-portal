@@ -1,40 +1,110 @@
-.wrapper {
-  display: flex;
-  flex-direction: row;
+/* Framework */
+html {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)),
+    url(compare-fibre-PAOv9-7VBMI-unsplash.jpg) no-repeat black;
+  height: 100vh;
 }
-ul {
-     display: flex;
-     flex-direction: row;
-     gap: 5px;
-     flex-wrap:wrap;
+body {
+  padding: 1rem 1rem 3rem;
+  grid-template-columns: 1fr min(50rem, 90%) 1fr;
+  background: transparent;
+}
+.container {
+  background: #040404;
+  border-radius: 1rem;
 }
 
+header {
+  background: white;
+  padding: 1.25rem 2rem 0.75rem;
+  border-radius: 1rem 1rem 0 0;
+}
+.logo {
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Content */
+.content {
+  padding: 1rem 2rem 3rem;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+}
 @media (max-width: 800px) {
   .ul {
     flex-direction: column;
   }
 }
+
+/* Form overrides */
+button,
+.button {
+  background: #eb8632;
+  border-color: #eb8632;
+}
+
+input,
+select,
+textarea {
+  border-color: #eb8632;
+}
+select {
+  color: #757575;
+}
+
+#search_box,
+#drive_sites_select {
+  min-width: 450px;
+  display: block;
+}
+
+input[type="checkbox"] {
+  margin: 0.5rem;
+}
+input[type="checkbox"]:checked {
+  background-color: #eb8632;
+}
+
+label {
+  margin: 1rem 0 1.5rem;
+}
+
+/* Direct login */
 .tooltip {
   position: relative;
   display: inline-block;
 }
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  /* background-color: black; */
-  /* color: #fff; */
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  top: -5px;
-  left: 17%;
+.wrapper {
+  display: flex;
+  flex-direction: row;
 }
 
+.tooltip .tooltiptext {
+  width: 150px;
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  border: none;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  right: 0;
+  font-size: 14px;
+}
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
