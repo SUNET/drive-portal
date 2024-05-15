@@ -34,12 +34,21 @@ h1 {
   text-align: center;
   margin-bottom: 3rem;
 }
-
-ul {
-  display: flex;
+ol {
+  padding-left: 20px;
+}
+ul#drive_sites {
+  /* display: flex;
   flex-direction: row;
   gap: 5px;
   flex-wrap: wrap;
+
+  display: inline; */
+  display: none;
+  padding-left: 0.5rem;
+}
+li#drive_sites {
+  display: inline;
 }
 @media (max-width: 800px) {
   .ul {
@@ -49,8 +58,8 @@ ul {
 
 /* Form overrides */
 button,
-.button {
-  background: #eb8632;
+a.button {
+  background-color: #eb8632;
   border-color: #eb8632;
 }
 
@@ -65,19 +74,20 @@ select {
 
 #search_box,
 #drive_sites_select {
-  min-width: 450px;
   display: block;
 }
-
+@media (min-width: 721px) {
+  #search_box,
+  #drive_sites_select {
+    /* min-width: 450px; */
+    width: 100%;
+  }
+}
 input[type="checkbox"] {
   margin: 0.5rem;
 }
 input[type="checkbox"]:checked {
   background-color: #eb8632;
-}
-
-label {
-  margin: 1rem 0 1.5rem;
 }
 
 /* Direct login */
@@ -88,6 +98,7 @@ label {
 .wrapper {
   display: flex;
   flex-direction: row;
+  margin: 1rem 0 1.5rem;
 }
 
 .tooltip .tooltiptext {
@@ -107,4 +118,13 @@ label {
 }
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.wrapper > div {
+  flex: 1;
+}
+.wrapper > div:first-child {
+  padding-right: 1rem;
+  border-right: 2px dotted rgb(220, 220, 220);
+  margin-right: 1rem;
 }

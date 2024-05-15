@@ -13,7 +13,6 @@ function use_direct() {
       link.href = link.href + suffix;
     }
   }
-
 }
 function filter_sites() {
   var text = document.getElementById("search_box").value;
@@ -27,20 +26,22 @@ function filter_sites() {
     item_text = item_text.toLowerCase();
     var shortname = link.dataset.shortname;
     var external_url = link.dataset.externalurl;
-    var condition = ((item_text.indexOf(text.toLowerCase()) > -1)
-      || (shortname.indexOf(text.toLowerCase()) > -1)
-      || (external_url.indexOf(text.toLowerCase()) > -1));
+    var condition =
+      item_text.indexOf(text.toLowerCase()) > -1 ||
+      shortname.indexOf(text.toLowerCase()) > -1 ||
+      external_url.indexOf(text.toLowerCase()) > -1;
     if (condition) {
-      items[i].style.display = "block";
+      items[i].style.display = "inline";
       visible = true;
+      list.style.display = "inline";
     } else {
       items[i].style.display = "none";
     }
-    if (shortname.indexOf('extern') > -1) {
+    if (shortname.indexOf("extern") > -1) {
       extern_id = i;
     }
   }
   if (!visible) {
-    document.getElementById(extern_id).style.display = "block";
+    document.getElementById(extern_id).style.display = "inline";
   }
 }

@@ -55,60 +55,76 @@
           </p>
 
           {% endif %}
+          <ol>
+            <li>
+              <div class="wrapper">
+                <div>
+                  <!-- Search -->
+                  <label for="search_box">
+                    {{i18n.search_label}}
+                    <input
+                      type="text"
+                      id="search_box"
+                      placeholder="{{i18n.search_placeholder}}"
+                      onkeyup="filter_sites()"
+                  /></label>
+                </div>
+                <div>
+                  <!-- Drop down -->
+                  <label for="drive_sites_select">
+                    {{i18n.select_label}}
+                    <select id="drive_sites_select">
+                      <option disabled selected value>{{i18n.select_placeholder}}</option>
+                      {% for item in drive_sites %}
+                      <option style="display: block" id="{{ drive_sites.index(item) }}">
+                        <a
+                          class="button"
+                          href="{{ item.href }}"
+                          data-shortname="{{ item.site }}"
+                          data-externalurl="{{item.external_url}}"
+                        >
+                          {{item.caption }}</a
+                        >
+                      </option>
+                      {% endfor %}
+                    </select>
+                  </label>
+                </div>
+              </div>
+            </li>
+            <li>
+              <!-- Button list -->
+              <label for="drive_sites"
+                >{{i18n.button_label}}
 
-          <!-- Search -->
-          <label for="search_box">
-            {{i18n.search_label}}
-            <input type="text" id="search_box" placeholder="{{i18n.search_placeholder}}" onkeyup="filter_sites()"
-          /></label>
-
-          <!-- Drop down -->
-          <label for="drive_sites_select">
-            {{i18n.select_label}}
-            <select id="drive_sites_select">
-              <option disabled selected value>{{i18n.select_placeholder}}</option>
-              {% for item in drive_sites %}
-              <option style="display: block" id="{{ drive_sites.index(item) }}">
-                <a
-                  class="button"
-                  href="{{ item.href }}"
-                  data-shortname="{{ item.site }}"
-                  data-externalurl="{{item.external_url}}"
-                >
-                  {{item.caption }}</a
-                >
-              </option>
-              {% endfor %}
-            </select>
-          </label>
-
-          {#<!-- <label for="drive_sites">
-            {{i18n.select_label}}
-            <ul id="drive_sites">
-              <li style="display: block" id="{{ drive_sites.index(item) }}">
-                <a
-                  class="button"
-                  href="{{ item.href }}"
-                  data-shortname="{{ item.site }}"
-                  data-externalurl="{{item.external_url}}"
-                >
-                  {{item.caption }}</a
-                >
-              </li>
-              {% endfor %}
-            </ul>
-        </label> -->#}
-
-          <!-- Direct login -->
-          <span class="tooltip">
-            <div class="wrapper">
-              <label for="direct_login"
-                >{{i18n.direct_login}}
-                <input type="checkbox" id="direct_login" name="direct" value="direct" onchange="use_direct()" />
+                <ul id="drive_sites">
+                  {% for item in drive_sites %}
+                  <li id="{{ drive_sites.index(item) }}">
+                    <a
+                      class="button"
+                      href="{{ item.href }}"
+                      data-shortname="{{ item.site }}"
+                      data-externalurl="{{item.external_url}}"
+                    >
+                      {{item.caption }}</a
+                    >
+                  </li>
+                  {% endfor %}
+                </ul>
               </label>
-            </div>
-            <span class="tooltiptext notice">{{i18n.tooltip_notice}}</span>
-          </span>
+
+              <!-- Direct login -->
+              <span class="tooltip">
+                <div class="wrapper">
+                  <label for="direct_login"
+                    >{{i18n.direct_login}}
+                    <input type="checkbox" id="direct_login" name="direct" value="direct" onchange="use_direct()" />
+                  </label>
+                </div>
+                <span class="tooltiptext notice">{{i18n.tooltip_notice}}</span>
+              </span>
+            </li>
+          </ol>
         </form>
       </div>
     </div>

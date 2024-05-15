@@ -38,6 +38,7 @@
   "instruction": "Log in to Sunet Drive by using the search field or choosing your institution from the list below.",
   "select_label": "Choose your institution",
   "select_placeholder": "Select site",
+  "button_label": "Log in via...",
   "sites": [
     {
       "full_name": "Antagning",
