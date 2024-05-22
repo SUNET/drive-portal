@@ -5,7 +5,7 @@ html {
   height: 100vh;
 }
 body {
-  padding: 1rem 1rem 3rem;
+  padding: 2rem 1rem 3rem;
   grid-template-columns: 1fr min(50rem, 90%) 1fr;
   background: transparent;
 }
@@ -18,6 +18,7 @@ header {
   background: white;
   padding: 1.25rem 2rem 0.75rem;
   border-radius: 1rem 1rem 0 0;
+  border-bottom: 3px solid #eb8632;
 }
 .logo {
   width: 300px;
@@ -34,26 +35,13 @@ h1 {
   text-align: center;
   margin-bottom: 3rem;
 }
-ol {
-  padding-left: 20px;
-}
-ul#drive_sites {
-  /* display: flex;
-  flex-direction: row;
-  gap: 5px;
-  flex-wrap: wrap;
 
-  display: inline; */
+ul#drive_sites {
+  padding-left: 0;
+}
+ul#drive_sites li {
   display: none;
-  padding-left: 0.5rem;
-}
-li#drive_sites {
-  display: inline;
-}
-@media (max-width: 800px) {
-  .ul {
-    flex-direction: column;
-  }
+  padding-left: 0;
 }
 
 /* Form overrides */
@@ -71,16 +59,22 @@ textarea {
 select {
   color: #757575;
 }
-
-#search_box,
-#drive_sites_select {
+input::-webkit-calendar-picker-indicator {
+  opacity: 100;
+}
+#site {
   display: block;
 }
-@media (min-width: 721px) {
-  #search_box,
-  #drive_sites_select {
-    /* min-width: 450px; */
+#site,
+#drive_sites {
+  width: auto;
+  min-width: 460px;
+}
+@media (max-width: 721px) {
+  #site,
+  #drive_sites {
     width: 100%;
+    min-width: auto;
   }
 }
 input[type="checkbox"] {
@@ -118,13 +112,4 @@ input[type="checkbox"]:checked {
 }
 .tooltip:hover .tooltiptext {
   visibility: visible;
-}
-
-.wrapper > div {
-  flex: 1;
-}
-.wrapper > div:first-child {
-  padding-right: 1rem;
-  border-right: 2px dotted rgb(220, 220, 220);
-  margin-right: 1rem;
 }

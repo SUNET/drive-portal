@@ -32,13 +32,13 @@
   },
   "direct_login": "Direktinloggning, endast med lokalt konto",
   "extern_info": "Om du inte hittar din institution, använd ",
-  "search_label": "Hitta din institution",
+  "search_label": "Din institution",
   "search_placeholder": "Sök instans",
   "tooltip_notice": "Lämna tom om osäker",
   "instruction": "Logga in i Sunet Drive genom att använda sökfältet eller välja din institution i listan nedan.",
   "select_label": "Välj din institution",
   "select_placeholder": "Välj instans",
-  "button_label": "Logga in via...",
+  "button_label": "Logga in via",
   "sites": [
     {
       "full_name": "Antagning",

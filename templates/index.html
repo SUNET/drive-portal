@@ -16,116 +16,86 @@
 
       <!-- Content -->
       <div class="content">
-        <form>
-          <!-- Error heading, error text -->
-          {% if user_info %} {% if user_info.direction == 'login' %}
-          <h1>{{i18n.header.problem}}</h1>
+        <!-- Error heading, error text -->
+        {% if user_info %} {% if user_info.direction == 'login' %}
+        <h1>{{i18n.header.problem}}</h1>
 
-          {% set one_account = user_info.site.split('.')[0] + '.se' -%} {% set one_site = user_info.site -%} {% set
-          two_account = user_info.domain -%} {% set two_site = user_info.domain.rstrip('.se') + '.' + domain -%}
-          <p>
-            {{i18n.text.problem.paragraph_one.before_display_name}}<b>{{user_info.displayname}}</b>{{i18n.text.problem.paragraph_one.before_idp_name}}<b>{{user_info.domain}}</b>{{i18n.text.problem.paragraph_one.before_site_name}}<b
-              >{{user_info.site }}</b
-            >{{i18n.text.problem.paragraph_one.after_site_name}}
-          </p>
-          <p>
-            {{i18n.text.problem.paragraph_two.before_option_one}}<b>{{one_account}}</b>{{i18n.text.problem.paragraph_two.before_site_one}}<a
-              href="https://{{ one_site }}"
-              >{{one_site}}</a
-            >{{i18n.text.problem.paragraph_two.before_option_two}}<b>{{two_account}}</b>{{i18n.text.problem.paragraph_two.before_site_two}}<a
-              href="https://{{two_site}}"
-              >{{two_site}}</a
-            >{{i18n.text.problem.after_site_two}}
-          </p>
-          <p>{{i18n.text.problem.paragraph_three.full_text}}</p>
-          {% else %}
-          <!-- Logout heading, logout text -->
-          <h1>{{i18n.header.logout}}</h1>
-          <p>
-            {{i18n.text.success.paragraph_one.before_site_name}}<a href="https://{{ user_info.site }}">
-              {{ user_info.site}}</a
-            >{{i18n.text.success.paragraph_one.after_site_name}}
-          </p>
-          {% endif %} {% else %}
-          <!-- Login heading, login text -->
-          <h1>{{i18n.header.login}}</h1>
-          <p>
-            {{i18n.instruction}} <br />
-            {{i18n.extern_info}}"<b>Extern</b>".
-          </p>
+        {% set one_account = user_info.site.split('.')[0] + '.se' -%} {% set one_site = user_info.site -%} {% set
+        two_account = user_info.domain -%} {% set two_site = user_info.domain.rstrip('.se') + '.' + domain -%}
+        <p>
+          {{i18n.text.problem.paragraph_one.before_display_name}}<b>{{user_info.displayname}}</b>{{i18n.text.problem.paragraph_one.before_idp_name}}<b>{{user_info.domain}}</b>{{i18n.text.problem.paragraph_one.before_site_name}}<b
+            >{{user_info.site }}</b
+          >{{i18n.text.problem.paragraph_one.after_site_name}}
+        </p>
+        <p>
+          {{i18n.text.problem.paragraph_two.before_option_one}}<b>{{one_account}}</b>{{i18n.text.problem.paragraph_two.before_site_one}}<a
+            href="https://{{ one_site }}"
+            >{{one_site}}</a
+          >{{i18n.text.problem.paragraph_two.before_option_two}}<b>{{two_account}}</b>{{i18n.text.problem.paragraph_two.before_site_two}}<a
+            href="https://{{two_site}}"
+            >{{two_site}}</a
+          >{{i18n.text.problem.after_site_two}}
+        </p>
+        <p>{{i18n.text.problem.paragraph_three.full_text}}</p>
+        {% else %}
+        <!-- Logout heading, logout text -->
+        <h1>{{i18n.header.logout}}</h1>
+        <p>
+          {{i18n.text.success.paragraph_one.before_site_name}}<a href="https://{{ user_info.site }}">
+            {{ user_info.site}}</a
+          >{{i18n.text.success.paragraph_one.after_site_name}}
+        </p>
+        {% endif %} {% else %}
+        <!-- Login heading, login text -->
+        <h1>{{i18n.header.login}}</h1>
+        <p>
+          {{i18n.instruction}} <br />
+          {{i18n.extern_info}}"<b>Extern</b>".
+        </p>
 
-          {% endif %}
-          <ol>
-            <li>
-              <div class="wrapper">
-                <div>
-                  <!-- Search -->
-                  <label for="search_box">
-                    {{i18n.search_label}}
-                    <input
-                      type="text"
-                      id="search_box"
-                      placeholder="{{i18n.search_placeholder}}"
-                      onkeyup="filter_sites()"
-                  /></label>
-                </div>
-                <div>
-                  <!-- Drop down -->
-                  <label for="drive_sites_select">
-                    {{i18n.select_label}}
-                    <select id="drive_sites_select">
-                      <option disabled selected value>{{i18n.select_placeholder}}</option>
-                      {% for item in drive_sites %}
-                      <option style="display: block" id="{{ drive_sites.index(item) }}">
-                        <a
-                          class="button"
-                          href="{{ item.href }}"
-                          data-shortname="{{ item.site }}"
-                          data-externalurl="{{item.external_url}}"
-                        >
-                          {{item.caption }}</a
-                        >
-                      </option>
-                      {% endfor %}
-                    </select>
-                  </label>
-                </div>
-              </div>
-            </li>
-            <li>
-              <!-- Button list -->
-              <label for="drive_sites"
-                >{{i18n.button_label}}
+        {% endif %}
 
-                <ul id="drive_sites">
-                  {% for item in drive_sites %}
-                  <li id="{{ drive_sites.index(item) }}">
-                    <a
-                      class="button"
-                      href="{{ item.href }}"
-                      data-shortname="{{ item.site }}"
-                      data-externalurl="{{item.external_url}}"
-                    >
-                      {{item.caption }}</a
-                    >
-                  </li>
-                  {% endfor %}
-                </ul>
-              </label>
+        <!-- Datalist (with select + input fallback) -->
+        <label for="site"
+          >{{i18n.search_label}}
+          <datalist id="site_list">
+            <select name="site">
+              {% for item in drive_sites %}
+              <option id="{{ drive_sites.index(item) }}">{{item.caption }}</option>
+              {% endfor %}
+            </select>
+            If other, please specify:
+          </datalist>
+          <input type="text" name="site" id="site" list="site_list" onchange="optionChanged(event)" />
+        </label>
 
-              <!-- Direct login -->
-              <span class="tooltip">
-                <div class="wrapper">
-                  <label for="direct_login"
-                    >{{i18n.direct_login}}
-                    <input type="checkbox" id="direct_login" name="direct" value="direct" onchange="use_direct()" />
-                  </label>
-                </div>
-                <span class="tooltiptext notice">{{i18n.tooltip_notice}}</span>
-              </span>
-            </li>
-          </ol>
-        </form>
+        <!-- Button list -->
+
+        <ul id="drive_sites">
+          {% for item in drive_sites %}
+          <li id="{{ drive_sites.index(item) }}">
+            <a
+              class="button"
+              href="{{ item.href }}"
+              data-shortname="{{ item.site }}"
+              data-externalurl="{{item.external_url}}"
+            >
+              {{i18n.button_label}} {{item.caption }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <!-- Direct login -->
+        <span class="tooltip">
+          <div class="wrapper">
+            <label for="direct_login"
+              >{{i18n.direct_login}}
+              <input type="checkbox" id="direct_login" name="direct" value="direct" onchange="use_direct()" />
+            </label>
+          </div>
+          <span class="tooltiptext notice">{{i18n.tooltip_notice}}</span>
+        </span>
       </div>
     </div>
   </body>
