@@ -1,8 +1,8 @@
 {
   "header": {
     "problem": "Problem logging in to Sunet Drive",
-    "logout": "Successful logout from Sunet Drive",
-    "login": "Login to Sunet Drive"
+    "logout": "Logged out from Sunet Drive",
+    "login": "Log in to Sunet Drive"
   },
   "text": {
     "problem": {
