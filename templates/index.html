@@ -17,7 +17,7 @@
       </header>
 
       <!-- Content -->
-      <div class="content">
+      <main class="content">
         <!-- Error heading, error text -->
         {% if user_info %} {% if user_info.direction == 'login' %}
         <h1>{{i18n.header.problem}}</h1>
@@ -57,22 +57,25 @@
 
         {% endif %}
 
-        <!-- Datalist (with select + input fallback) -->
+        <!-- Datalist (with input fallback) -->
         <label for="site"
-          >{{i18n.search_label}}
+          >{{i18n.search_label}}<br />
           <datalist id="site_list">
-            <select name="site">
-              {% for item in drive_sites %}
-              <option id="{{ drive_sites.index(item) }}">{{item.caption }}</option>
-              {% endfor %}
-            </select>
-            If other, please specify:
+            {% for item in drive_sites %}
+            <option id="{{ drive_sites.index(item) }}">{{item.caption }}</option>
+            {% endfor %}
           </datalist>
-          <input type="text" name="site" id="site" list="site_list" onchange="optionChanged(event)" />
+          <input
+            type="text"
+            name="site"
+            id="site"
+            list="site_list"
+            onchange="this.blur();optionChanged(event)"
+            onfocus="this.value=''"
+          />
         </label>
 
         <!-- Button list -->
-
         <ul id="drive_sites">
           {% for item in drive_sites %}
           <li id="{{ drive_sites.index(item) }}">
@@ -98,7 +101,28 @@
           </div>
           <span class="tooltiptext notice">{{i18n.tooltip_notice}}</span>
         </span>
-      </div>
+      </main>
+
+      <!-- Show more content -->
+      <footer class="content">
+        <div id="show_more">
+          <button id="more_handle" onclick="showMore()">{{i18n.more_handle}}<span></span></button>
+          <div id="more_info">
+            <p>{{i18n.more_preamble_one}}{{i18n.more_preamble_two}}</p>
+            <ul>
+              <li>
+                {{i18n.more_sunet_link}}
+                <a href="https://www.sunet.se/services/molnbaserade-tjanster/sunet-drive">sunet.se</a>
+              </li>
+              <li>
+                {{i18n.more_wiki_link}}
+                <a href="https://wiki.sunet.se/display/Drive/Sunet+Drive">wiki.sunet.se</a>
+              </li>
+              <li>{{i18n.more_forum_link}} <a href="https://forum.sunet.se/">forum.sunet.se</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
