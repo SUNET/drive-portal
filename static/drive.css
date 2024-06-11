@@ -73,9 +73,7 @@ textarea {
 select {
   color: #757575;
 }
-input::-webkit-calendar-picker-indicator {
-  opacity: 100;
-}
+
 #site {
   display: block;
 }
@@ -91,6 +89,27 @@ input[type="checkbox"] {
 }
 input[type="checkbox"]:checked {
   background-color: #eb8632;
+}
+
+/* dropdown arrow for FF */
+#site_list_label {
+  position: relative;
+  width: fit-content;
+}
+#site_list_label::after {
+  content: "\25BC";
+  font-family: auto;
+  bottom: 0.5rem;
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+  font-size: 0.75rem;
+}
+input::-webkit-calendar-picker-indicator,
+input::-webkit-calendar-picker-indicator:hover,
+input::-webkit-calendar-picker-indicator:focus {
+  display: none;
+  opacity: 0; /* remove default arrow */
 }
 
 /* Direct login */
@@ -139,9 +158,9 @@ input[type="checkbox"]:checked {
 }
 #more_handle span:after {
   content: "\25BC";
-  font-family: monospace;
+  font-family: auto;
   padding-left: 0.5rem;
-  vertical-align: top;
+  font-size: 0.75rem;
 }
 #show_more.shows #more_handle span:after {
   content: "\25B2";

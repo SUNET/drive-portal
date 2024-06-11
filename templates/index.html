@@ -58,11 +58,11 @@
         {% endif %}
 
         <!-- Datalist (with input fallback) -->
-        <label for="site"
+        <label for="site" id="site_list_label"
           >{{i18n.search_label}}<br />
           <datalist id="site_list">
             {% for item in drive_sites %}
-            <option id="{{ drive_sites.index(item) }}">{{item.caption }}</option>
+            <option id="{{ drive_sites.index(item) }}">{{item.caption }} ({{item.site }})</option>
             {% endfor %}
           </datalist>
           <input
@@ -72,6 +72,7 @@
             list="site_list"
             onchange="this.blur();optionChanged(event)"
             onfocus="this.value=''"
+            onmouseover="focus();"
           />
         </label>
 
