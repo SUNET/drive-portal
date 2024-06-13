@@ -38,7 +38,7 @@
   "instruction": "Logga in i Sunet Drive genom att använda sökfältet eller välja din institution i listan nedan.",
   "select_label": "Välj din institution",
   "select_placeholder": "Välj instans",
-  "button_label": "Logga in via",
+  "button_label": "Logga in via:",
   "more_handle": "Om Sunet Drive",
   "more_preamble_one": "Välkommen till Sunet Drive, en molnbaserad fildelnings- och lagringstjänst som möjliggör samarbete med stora ",
   "more_preamble_two": "datamängder mellan organisationer, med tillgång genom din SWAMID-anknutna instans.",

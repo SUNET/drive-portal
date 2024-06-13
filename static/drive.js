@@ -18,22 +18,19 @@ function use_direct() {
 
 // Filtering site-buttons using datalist/input
 function optionChanged(event) {
-  var text = event.target.value;
-  console.log(text);
+  var input_text = event.target.value.replaceAll(" ", "").toLowerCase();
   var list = document.getElementById("drive_sites");
   var items = list.getElementsByTagName("li");
   var visible = false;
   var extern_id = 0;
   for (var i = 0; i < items.length; ++i) {
     let link = items[i].getElementsByTagName("a")[0];
-    var item_text = link.innerText;
-    item_text = item_text.toLowerCase();
-    var shortname = link.dataset.shortname;
-    var external_url = link.dataset.externalurl;
+    var link_text = link.innerText.replaceAll(" ", "").toLowerCase();
+    var shortname = link.dataset.shortname.replaceAll(" ", "").toLowerCase();
+    var external_url = link.dataset.externalurl.replaceAll(" ", "").toLowerCase();
     var condition =
-      item_text.indexOf(text.toLowerCase()) > -1 ||
-      shortname.indexOf(text.toLowerCase()) > -1 ||
-      external_url.indexOf(text.toLowerCase()) > -1;
+      link_text.includes(input_text) || shortname.includes(input_text) || external_url.includes(input_text);
+    console.log(condition);
     if (condition) {
       items[i].style.display = "block";
       visible = true;

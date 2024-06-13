@@ -41,14 +41,6 @@ h1 {
   margin-bottom: 1em;
 }
 
-ul#drive_sites {
-  padding-left: 0;
-}
-ul#drive_sites li {
-  display: none;
-  padding-left: 0;
-}
-
 /* Form simple overrides */
 a.button {
   background-color: #eb8632;
@@ -63,6 +55,16 @@ a.button:hover {
 
 a {
   color: #eb8632;
+}
+
+i {
+  font-style: italic;
+}
+i::before {
+  content: "(";
+}
+i::after {
+  content: ")";
 }
 
 input,
@@ -91,10 +93,26 @@ input[type="checkbox"]:checked {
   background-color: #eb8632;
 }
 
+/* button-link-list */
+ul#drive_sites {
+  padding-left: 0;
+}
+ul#drive_sites li {
+  display: none;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+#link_list_label,
+#site_shortname {
+  display: none;
+}
+
 /* dropdown arrow for FF */
 #site_list_label {
   position: relative;
   width: fit-content;
+  margin-bottom: 0.5em;
 }
 #site_list_label::after {
   content: "\25BC";

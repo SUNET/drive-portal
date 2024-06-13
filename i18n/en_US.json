@@ -38,7 +38,7 @@
   "instruction": "Log in to Sunet Drive by using the search field or choosing your institution from the list below.",
   "select_label": "Choose your institution",
   "select_placeholder": "Select site",
-  "button_label": "Log in via",
+  "button_label": "Log in via:",
   "more_handle": "About Sunet Drive",
   "more_preamble_one": "Welcome to Sunet Drive, a cloud based file sharing and storage service enabling cooperation on large amounts ",
   "more_preamble_two": "of data in between organisations, accessed using your SWAMID-associated institution credentials.",

@@ -54,7 +54,6 @@
           {{i18n.instruction}} <br />
           {{i18n.extern_info}}"<b>Extern</b>".
         </p>
-
         {% endif %}
 
         <!-- Datalist (with input fallback) -->
@@ -62,7 +61,7 @@
           >{{i18n.search_label}}<br />
           <datalist id="site_list">
             {% for item in drive_sites %}
-            <option id="{{ drive_sites.index(item) }}">{{item.caption }} ({{item.site }})</option>
+            <option id="{{ drive_sites.index(item) }}">{{item.caption }} <i>{{item.site }}</i></option>
             {% endfor %}
           </datalist>
           <input
@@ -77,16 +76,17 @@
         </label>
 
         <!-- Button list -->
+        <span class="link_list_label">{{i18n.button_label}}</span>
         <ul id="drive_sites">
           {% for item in drive_sites %}
           <li id="{{ drive_sites.index(item) }}">
             <a
               class="button"
-              href="{{ item.href }}"
+              lhref="{{ item.href }}"
               data-shortname="{{ item.site }}"
               data-externalurl="{{item.external_url}}"
             >
-              {{i18n.button_label}} {{item.caption }}
+              {{item.caption }} <span id="site_shortname">{{item.site }}</span>
             </a>
           </li>
           {% endfor %}
