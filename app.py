@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from urllib.parse import unquote
 import os
 import glob
@@ -23,6 +23,13 @@ for lang in language_files:
     with open(lang, 'r', encoding='utf8') as file:
         languages[lang_code] = json.loads(file.read())
 supported_languages = list(languages.keys())
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico',
+                               mimetype='image/vnd.microsoft.icon')
 
 
 @app.route('/', methods=['GET'])
