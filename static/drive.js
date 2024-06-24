@@ -29,11 +29,9 @@ function optionChanged(event) {
     var item_text = link.innerText;
     item_text = item_text.toLowerCase();
     var shortname = link.dataset.shortname;
-    var external_url = link.dataset.externalurl;
     var condition =
       item_text.indexOf(text.toLowerCase()) > -1 ||
-      shortname.indexOf(text.toLowerCase()) > -1 ||
-      external_url.indexOf(text.toLowerCase()) > -1;
+      shortname.indexOf(text.toLowerCase()) > -1;
     if (condition) {
       items[i].style.display = "block";
       visible = true;
