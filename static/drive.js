@@ -27,11 +27,13 @@ function optionChanged(event) {
   for (var i = 0; i < items.length; ++i) {
     let link = items[i].getElementsByTagName("a")[0];
     var item_text = link.innerText;
+    var full_text = link.innerText + " (" + link.dataset.shortname + ")";
     item_text = item_text.toLowerCase();
     var shortname = link.dataset.shortname;
     var condition =
       item_text.indexOf(text.toLowerCase()) > -1 ||
-      shortname.indexOf(text.toLowerCase()) > -1;
+      shortname.indexOf(text.toLowerCase()) > -1 ||
+      full_text == text;
     if (condition) {
       items[i].style.display = "block";
       visible = true;
