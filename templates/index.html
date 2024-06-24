@@ -32,7 +32,7 @@
         </p>
         <p>
           {{i18n.text.problem.paragraph_two.before_option_one}}<b>{{one_account}}</b>{{i18n.text.problem.paragraph_two.before_site_one}}<a
-            href="https://{{ one_site }}"
+            href="https://{{one_site}}"
             >{{one_site}}</a
           >{{i18n.text.problem.paragraph_two.before_option_two}}<b>{{two_account}}</b>{{i18n.text.problem.paragraph_two.before_site_two}}<a
             href="https://{{two_site}}"
@@ -85,6 +85,7 @@
               class="button"
               href="{{ item.href }}"
               data-shortname="{{ item.site }}"
+              data-fullname="{{ item.caption }}"
             >
               {{i18n.button_label}} {{item.caption }}
             </a>
