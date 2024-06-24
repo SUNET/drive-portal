@@ -18,7 +18,7 @@ function use_direct() {
 
 // Filtering site-buttons using datalist/input
 function optionChanged(event) {
-  var text = event.target.value;
+  var text = document.getElementById("site").value;
   console.log(text);
   var list = document.getElementById("drive_sites");
   var items = list.getElementsByTagName("li");
