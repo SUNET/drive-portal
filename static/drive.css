@@ -76,10 +76,10 @@ select {
   color: #757575;
 }
 
-#site {
+#site_input {
   display: block;
 }
-#site,
+#site_input,
 #drive_sites,
 select {
   width: auto;
@@ -208,7 +208,7 @@ input::-webkit-calendar-picker-indicator:focus {
   .content {
     padding: 0 1em 0;
   }
-  #site,
+  #site_input,
   #drive_sites,
   select {
     width: 100%;

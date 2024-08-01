@@ -16,6 +16,10 @@ function use_direct() {
   }
 }
 
+document.getElementById("site_input").addEventListener("change", (event) => {
+  optionChanged(event);
+});
+
 // Filtering site-buttons using datalist/input
 function optionChanged(event) {
   var input_text = event.target.value.replaceAll(" ", "").toLowerCase();
