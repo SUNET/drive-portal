@@ -16,35 +16,76 @@ function use_direct() {
   }
 }
 
-document.getElementById("site_input").addEventListener("change", (event) => {
-  optionChanged(event);
+// Datalist field
+let user_input = document.getElementById("site_input");
+
+// Handling input event to avoid extra enter click when mouse selecting option for Firefox
+user_input.addEventListener("input", (event) => {
+  let event_type = event.inputType;
+  if (event_type == "insertReplacementText") {
+    optionChanged(event);
+
+    //Shifts focus from input
+    user_input.blur();
+  }
 });
 
-// Filtering site-buttons using datalist/input
+// Fires on typing and key selecting
+user_input.addEventListener("change", (event) => {
+  // Type min 2 letters to avoid long button list
+  if (event.target.value.length > 1) {
+    optionChanged(event);
+
+    //Shifts focus from input
+    user_input.blur();
+  }
+});
+
+// Shows options on first click for Firefox
+user_input.addEventListener("mouseover", (event) => {
+  user_input.focus();
+});
+
+// Clearing input when revisiting
+user_input.addEventListener("focus", (event) => {
+  user_input.value = "";
+});
+
+// Filtering site-button-list using datalist/input
 function optionChanged(event) {
-  var input_text = event.target.value.replaceAll(" ", "").toLowerCase();
+  var user_input_text = event.target.value.toLowerCase();
   var list = document.getElementById("drive_sites");
   var items = list.getElementsByTagName("li");
+
   var visible = false;
   var extern_id = 0;
+
   for (var i = 0; i < items.length; ++i) {
     let link = items[i].getElementsByTagName("a")[0];
-    var link_text = link.innerText.replaceAll(" ", "").toLowerCase();
-    var shortname = link.dataset.shortname.replaceAll(" ", "").toLowerCase();
-    var external_url = link.dataset.externalurl.replaceAll(" ", "").toLowerCase();
+
+    // Hide previous result
+    items[i].style.display = "none";
+
+    // Lower case site comparables
+    var link_text = link.innerText.toLowerCase();
+    var shortname = link.dataset.shortname.toLowerCase();
+    var external_url = link.dataset.externalurl.toLowerCase();
+
+    // Match input to site name, url or short name to match visible options
     var condition =
-      link_text.includes(input_text) || shortname.includes(input_text) || external_url.includes(input_text);
-    console.log(condition);
+      link_text.includes(user_input_text) ||
+      shortname.includes(user_input_text) ||
+      external_url.includes(user_input_text);
+
     if (condition) {
       items[i].style.display = "block";
       visible = true;
-    } else {
-      items[i].style.display = "none";
     }
     if (shortname.indexOf("extern") > -1) {
       extern_id = i;
     }
   }
+
   if (!visible) {
     document.getElementById(extern_id).style.display = "inline";
   }

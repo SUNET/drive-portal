@@ -64,15 +64,7 @@
             <option id="{{ drive_sites.index(item) }}">{{item.caption }} <i>{{item.site }}</i></option>
             {% endfor %}
           </datalist>
-          <input
-            type="text"
-            name="site"
-            id="site_input"
-            list="site_list"
-            onchange="this.blur()"
-            onfocus="this.value=''"
-            onmouseover="focus()"
-          />
+          <input type="text" name="site" id="site_input" list="site_list" />
         </label>
 
         <!-- Button list -->

@@ -161,7 +161,7 @@ input::-webkit-calendar-picker-indicator:focus {
 
 /* Show more (footer) */
 #show_more {
-  background-color: rgb(0, 0, 0, 0.85);
+  background-color: rgb(0, 0, 0);
   border-radius: 28px;
   padding: 1em;
 }
