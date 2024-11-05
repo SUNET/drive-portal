@@ -4,5 +4,6 @@ domain: drive.test.sunet.se
 idps:
   - id: sunet
     name: Sunet
-    entityId: https://connect.eduid.se/sunet
-    drive: https://sunet.drive.test.sunet.se/
+    entityIds: 
+      - https://connect.eduid.se/sunet
+    drive: https://sunet.drive.test.sunet.se
