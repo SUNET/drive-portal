@@ -16,8 +16,8 @@ with open("/app/config.yaml", 'r') as fh:
 def map_entity(entityId):
     for idp in yml['idps']:
         if entityId in idp['entityIds']:
-            return f"{idp['drive']}/index.php/apps/saml/login?idp_hint={entityId}"
-    return f"https://extern.{domain}/index.php/apps/saml/login?idp_hint={entityId}"
+            return f"{idp['drive']}/index.php/apps/user_saml/saml/login?idp_hint={entityId}"
+    return f"https://extern.{domain}/index.php/apps/user_saml/saml/login?idp_hint={entityId}"
 
 @app.route('/favicon.ico')
 def favicon():
