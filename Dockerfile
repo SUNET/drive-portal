@@ -5,7 +5,6 @@ COPY ./ /etc/app_skel/
 RUN useradd --add-subids-for-system --system --create-home --home-dir /app --skel /etc/app_skel/ --shell /bin/bash appuser
 USER appuser
 WORKDIR /app
-RUN ./metadata.py > config.yaml
 ENV PATH /app/.local/bin:$PATH
 RUN pipx install gunicorn==21.2.0 && cat /app/requirements.txt | xargs pipx inject gunicorn
 EXPOSE 8080

@@ -1,195 +1,149 @@
 domain: drive.test.sunet.se
 idps:
   - id: bth
-    name: Blekinge Institute of Technology
     entityIDs:
       - http://fs.bth.se/adfs/services/trust
   - id: chalmers
-    name: Chalmers
     entityIDs:
       - http://idp.chalmers.se/adfs/services/trust
   - id: hhs
-    name: Stockholm School of Economics
     entityIDs:
       - https://login.idp.hhs.se/idp/shibboleth
       - http://fds.idp.hhs.se/adfs/services/trust
   - id: du
-    name: Dalarna University
     entityIDs:
       - https://login.du.se/idp/shibboleth
   - id: vinnova
-    name: Forte Formas SNSA SSF Vinnova
     entityIDs:
       - http://sts.vinnova.se/adfs/services/trust
   - id: hh
-    name: Halmstad University
     entityIDs:
       - https://idp.hh.se/idp/shibboleth
   - id: hj
-    name: "J\xF6nk\xF6ping University"
     entityIDs:
       - http://adfs.ju.se/adfs/services/trust
   - id: kth
-    name: KTH Royal Institute of Technology
     entityIDs:
       - https://saml.sys.kth.se/idp/shibboleth
   - id: kau
-    name: Karlstad University
     entityIDs:
       - https://weblogin.kau.se/idp/shibboleth
   - id: ki
-    name: Karolinska Institutet
     entityIDs:
       - https://login.ki.se/idp/shibboleth
   - id: konstfack
-    name: Konstfack - University account
     entityIDs:
       - https://idp-v2.konstfack.se/adfs/services/trust
       - https://connect.eduid.se/konstfack
   - id: hkr
-    name: Kristianstad University Sweden
     entityIDs:
       - https://idp.hkr.se/idp/shibboleth
   - id: liu
-    name: "Link\xF6ping University"
     entityIDs:
       - http://fs.liu.se/adfs/services/trust
   - id: lnu
-    name: Linnaeus University
     entityIDs:
       - https://idp.lnu.se/idp/shibboleth
       - https://idp.qa.lnu.se/idp/shibboleth
   - id: ltu
-    name: Lulea University of Technology
     entityIDs:
       - https://idp.ltu.se/idp/shibboleth
   - id: lu
-    name: Lund University
     entityIDs:
       - https://idpv4.lu.se/idp/shibboleth
   - id: mau
-    name: "Malm\xF6 University"
     entityIDs:
       - http://sts.mau.se/adfs/services/trust
   - id: esh
-    name: "Marie Cederschi\xF6ld University College"
     entityIDs:
       - https://idp.esh.se/idp/shibboleth
   - id: miun
-    name: Mid Sweden University
     entityIDs:
       - https://miunidp.miun.se/idp/shibboleth
   - id: kb
-    name: National Library of Sweden
     entityIDs:
       - http://sso.kb.se/adfs/services/trust
   - id: slu
-    name: New Swedish University of Agricultural Sciences
     entityIDs:
       - http://idp-fs.slu.se/adfs/services/trust
       - https://idp-shib.slu.se/idp
   - id: kmh
-    name: Royal College of Music in Stockholm
     entityIDs:
       - https://idp.kmh.se/idp/shibboleth
   - id: kkh
-    name: Royal Institute of Art
     entityIDs:
       - https://idp2.kkh.se/idp/shibboleth
       - https://idp.kkh.se/idp/shibboleth
   - id: smhi
-    name: SMHI
     entityIDs:
       - https://weblogin.smhi.se/idp/shibboleth
   - id: sunet
-    name: SUNET - Connect
     entityIDs:
       - https://connect.eduid.se/sunet
       - https://idp.sunet.se/idp
   - id: shh
-    name: Sophiahemmet University
     entityIDs:
       - https://swamid2.shh.se/idp/shibboleth
   - id: su
-    name: Stockholm University
     entityIDs:
       - https://idp.it.su.se/idp/shibboleth
   - id: uniarts
-    name: Stockholm University of the Arts
     entityIDs:
       - http://webproxysrv.uniarts.se/adfs/services/trust
       - https://idp.uniarts.se/idp/shibboleth
   - id: fhs
-    name: Swedish Defence University
     entityIDs:
       - http://login2.fhs.se/adfs/services/trust
   - id: irf
-    name: Swedish Institute of Space Physics
     entityIDs:
       - https://idpshibboleth.irf.se/idp/shibboleth
   - id: nrm
-    name: Swedish Museum of Natural History
     entityIDs:
       - http://fs.nrm.se/adfs/services/trust
   - id: rkh
-    name: Swedish Red Cross University College
     entityIDs:
       - http://adfs.rkh.se/adfs/services/trust
   - id: suni
-    name: "S\xF6dert\xF6rn University"
     entityIDs:
       - https://idp-v2.suni.se/adfs/services/trust
   - id: kva
-    name: The Royal Swedish Academy of Sciences
     entityIDs:
       - https://idp.kva.se/idp/shibboleth
   - id: uhr
-    name: The Swedish Council for Higher Education
     entityIDs:
       - https://shibboleth.uhr.se/idp/shibboleth
   - id: vr
-    name: The Swedish Research Council
     entityIDs:
       - http://idp.vr.se/adfs/services/trust
   - id: gih
-    name: The Swedish School of Sport and Health Sciences
     entityIDs:
       - https://idp01.gih.se/idp/shibboleth
   - id: umu
-    name: Umea University
     entityIDs:
       - http://adfs.umu.se/adfs/services/trust
   - id: ths
-    name: University College Stockholm
     entityIDs:
       - https://idp.ths.se/idp/shibboleth
   - id: hv
-    name: University West
     entityIDs:
       - http://adfs.hv.se/adfs/services/trust
   - id: hb
-    name: "University of Bor\xE5s"
     entityIDs:
       - https://idp.hb.se/idp/shibboleth
   - id: gu
-    name: University of Gothenburg
     entityIDs:
       - https://idp3.it.gu.se/idp/shibboleth
   - id: hig
-    name: "University of G\xE4vle"
     entityIDs:
       - https://idp3.hig.se/idp/shibboleth
   - id: his
-    name: "University of Sk\xF6vde"
     entityIDs:
       - https://idp.his.se/idp/shibboleth
   - id: antagning
-    name: www.universityadmissions.se
     entityIDs:
       - https://idp.test.antagning.se/aws-idp
       - https://idp.antagning.se/aws-idp
   - id: oru
-    name: "\xD6rebro University x"
     entityIDs:
       - https://idp.oru.se/idp/shibboleth
       - https://shib-idp-1.oru.se/idp/shibboleth

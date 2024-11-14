@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import json
 import requests
 import sys
 import yaml
+import os
 
 
 class MyDumper(yaml.Dumper):
@@ -83,12 +83,12 @@ def validate(idps):
 
 
 def output(idps):
-    transformed = {"domain": "drive.test.sunet.se", "idps": []}
+    transformed = {"domain": os.environ.get("DRIVE_DOMAIN"), "idps": []}
 
     for key in idps:
         idp = idps[key]
         transformed["idps"].append(
-            {"id": key, "name": idp['name'], "entityIDs": idp['entityIDs']})
+            {"id": key, "entityIDs": idp['entityIDs']})
     yaml.dump(transformed, sys.stdout, Dumper=MyDumper, sort_keys=False)
 
 
@@ -104,21 +104,8 @@ def main():
                 if scope in drive_scopes:
                     index = scope.replace('.se', "")
                     if index not in idps:
-                        idps[index] = {
-                            "name": entity['title'], 'entityIDs': []}
-                    elif (index in idps
-                          and (
-                              "test" in idps[index]['name'].lower()
-                              or "deprecated" in idps[index]['name'].lower()
-                          )
-                          and (
-                              "test" not in entity['title'].lower()
-                              or "deprecated" not in entity['title'].lower())
-                          ):
-                        idps[index]['name'] = entity['title']
+                        idps[index] = {'entityIDs': []}
                     idps[index]['entityIDs'].append(entity['entityID'])
-    #    elif 'type' in entity and entity['type'] == 'idp':
-    #        idps['extern']['entityIDs'].append(entity['entityID'])
     validate(idps)
     output(idps)
 
