@@ -23,7 +23,14 @@ with open("/app/config.yaml", 'r') as fh:
 def map_entity(entityID):
     for idp in yml['idps']:
         if entityID in idp['entityIDs']:
-            drive = f"https://{idp['id']}.{domain}/index.php/apps/user_saml"
+            mid = idp['id']
+            # Map customers with different scope than name
+            if mid == 'mdh':
+                mid = "mdu"
+            if mid == 'nordu':
+                mid = 'nordunet'
+
+            drive = f"https://{mid}.{domain}/index.php/apps/user_saml"
             return f"{drive}/saml/login?idp_hint={entityID}"
     drive = f"https://extern.{domain}/index.php/apps/user_saml"
     return f"{drive}/saml/login?idp_hint={entityID}"

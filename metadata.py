@@ -43,7 +43,7 @@ drive_scopes = ["antagning.se",
                 "mau.se",
                 "mdu.se",
                 "miun.se",
-                "nordunet.se",
+                "nordu.net",
                 "nrm.se",
                 "oru.se",
                 "rkh.se",
@@ -61,7 +61,7 @@ drive_scopes = ["antagning.se",
                 "uhr.se",
                 "umu.se",
                 "uniarts.se",
-                "uu.se",
+                "user.uu.se",
                 "vinnova.se",
                 "vr.se"]
 
@@ -101,7 +101,9 @@ def main():
             scopes = entity['scope'].split(',')
             for scope in scopes:
                 if scope in drive_scopes:
-                    index = scope.replace('.se', "")
+                    index = scope
+                    for substring in ["user.", ".se", ".net"]:
+                        index = index.replace(substring, "")
                     if index not in idps:
                         idps[index] = {'entityIDs': []}
                     idps[index]['entityIDs'].append(entity['entityID'])

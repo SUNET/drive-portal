@@ -59,6 +59,9 @@ idps:
   - id: miun
     entityIDs:
       - https://miunidp.miun.se/idp/shibboleth
+  - id: nordu
+    entityIDs:
+      - https://idp.nordu.net/idp/shibboleth
   - id: kb
     entityIDs:
       - http://sso.kb.se/adfs/services/trust
@@ -142,6 +145,9 @@ idps:
     entityIDs:
       - https://idp.test.antagning.se/aws-idp
       - https://idp.antagning.se/aws-idp
+  - id: uu
+    entityIDs:
+      - https://weblogin.uu.se/idp/shibboleth
   - id: oru
     entityIDs:
       - https://idp.oru.se/idp/shibboleth
