@@ -20,13 +20,13 @@ with open("/app/config.yaml", 'r') as fh:
     yml = yaml.safe_load(fh)
 
 
-def map_entity(entityId):
+def map_entity(entityID):
     for idp in yml['idps']:
-        if entityId in idp['entityIds']:
+        if entityID in idp['entityIDs']:
             drive = f"https://{idp['id']}.{domain}/index.php/apps/user_saml"
-            return f"{drive}/saml/login?idp_hint={entityId}"
+            return f"{drive}/saml/login?idp_hint={entityID}"
     drive = f"https://extern.{domain}/index.php/apps/user_saml"
-    return f"{drive}/saml/login?idp_hint={entityId}"
+    return f"{drive}/saml/login?idp_hint={entityID}"
 
 
 @app.route('/favicon.ico')
@@ -42,8 +42,8 @@ def index():
     disco_url += f"?entityID=https%3A%2F%2Fidp-proxy.{domain}%2Fsp&return="
     disco_url += f"https%3A%2F%2Fportal.{domain}"
 
-    entityId = request.args.get('entityID')
-    if not entityId:
+    entityID = request.args.get('entityID')
+    if not entityID:
         return redirect(disco_url)
     else:
-        return redirect(map_entity(entityId))
+        return redirect(map_entity(entityID))
