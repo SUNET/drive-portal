@@ -69,6 +69,9 @@ idps:
     entityIDs:
       - http://idp-fs.slu.se/adfs/services/trust
       - https://idp-shib.slu.se/idp
+  - id: ri
+    entityIDs:
+      - http://adfs.sp.se/adfs/services/trust
   - id: kmh
     entityIDs:
       - https://idp.kmh.se/idp/shibboleth

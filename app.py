@@ -29,6 +29,8 @@ def map_entity(entityID):
                 mid = "mdu"
             if mid == 'nordu':
                 mid = 'nordunet'
+            if mid == 'ri':
+                mid = 'sics'
 
             drive = f"https://{mid}.{domain}/index.php/apps/user_saml"
             return f"{drive}/saml/login?idp_hint={entityID}"
