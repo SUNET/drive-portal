@@ -11,12 +11,13 @@ app = Flask(__name__)
 
 # Load config
 yml = {}
-domain = ""
+domain = os.environ.get('DRIVE_DOMAIN')
+if domain is None:
+    raise Exception("DRIVE_DOMAIN environment variable not set")
 if not os.path.exists("/config/config.yaml"):
     raise Exception("/config/config.yaml file not found")
 with open("/config/config.yaml", 'r') as fh:
     yml = yaml.safe_load(fh)
-    domain = yml["domain"]
 
 
 def map_entity(entityId):

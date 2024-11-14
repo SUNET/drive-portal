@@ -1,4 +1,3 @@
-domain: drive.test.sunet.se
 idps:
   - id: bth
     entityIDs:

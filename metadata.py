@@ -3,7 +3,6 @@
 import requests
 import sys
 import yaml
-import os
 
 
 class MyDumper(yaml.Dumper):
@@ -83,7 +82,7 @@ def validate(idps):
 
 
 def output(idps):
-    transformed = {"domain": os.environ.get("DRIVE_DOMAIN"), "idps": []}
+    transformed = {"idps": []}
 
     for key in idps:
         idp = idps[key]
