@@ -12,9 +12,9 @@ app = Flask(__name__)
 # Load config
 yml = {}
 domain = ""
-if not os.path.exists("/app/config.yaml"):
-    raise Exception("/app/config.yaml file not found")
-with open("/app/config.yaml", 'r') as fh:
+if not os.path.exists("/config/config.yaml"):
+    raise Exception("/config/config.yaml file not found")
+with open("/config/config.yaml", 'r') as fh:
     yml = yaml.safe_load(fh)
     domain = yml["domain"]
 
@@ -22,9 +22,10 @@ with open("/app/config.yaml", 'r') as fh:
 def map_entity(entityId):
     for idp in yml['idps']:
         if entityId in idp['entityIds']:
-            drive = f"https://{idp['id']}.{domain}"
-            return f"{drive}/index.php/apps/user_saml/saml/login?idp_hint={entityId}"
-    return f"https://extern.{domain}/index.php/apps/user_saml/saml/login?idp_hint={entityId}"
+            drive = f"https://{idp['id']}.{domain}/index.php/apps/user_saml"
+            return f"{drive}/saml/login?idp_hint={entityId}"
+    drive = f"https://extern.{domain}/index.php/apps/user_saml"
+    return f"{drive}/saml/login?idp_hint={entityId}"
 
 
 @app.route('/favicon.ico')
@@ -36,7 +37,8 @@ def favicon():
 
 @app.route('/', methods=['GET'])
 def index():
-    disco_url = f'https://service.seamlessaccess.org/ds/?entityID=https%3A%2F%2Fidp-proxy.{
+    base = "https://service.seamlessaccess.org/ds"
+    disco_url = f'{base}/?entityID=https%3A%2F%2Fidp-proxy.{
         domain}%2Fsp&return=https%3A%2F%2Fportal.{domain}'
 
     entityId = request.args.get('entityID')
