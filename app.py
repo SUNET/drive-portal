@@ -14,9 +14,9 @@ yml = {}
 domain = os.environ.get('DRIVE_DOMAIN')
 if domain is None:
     raise Exception("DRIVE_DOMAIN environment variable not set")
-if not os.path.exists("/config/config.yaml"):
-    raise Exception("/config/config.yaml file not found")
-with open("/config/config.yaml", 'r') as fh:
+if not os.path.exists("/app/config.yaml"):
+    raise Exception("/app/config.yaml file not found")
+with open("/app/config.yaml", 'r') as fh:
     yml = yaml.safe_load(fh)
 
 
