@@ -1,6 +1,6 @@
 ---
 environment_variables:
-  PORTAL_VERSION: "0.1.0-3"
+  PORTAL_VERSION: "0.1.0-4"
 git:
   branch: main
 triggers:
