@@ -52,6 +52,13 @@ def status():
                                mimetype='application/json')
 
 
+@app.route('/ocs/v2.php/cloud/capabilities')
+def capabilities():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'capabilities.json',
+                               mimetype='application/json')
+
+
 @app.route('/', methods=['GET'])
 def index():
     disco_url = "https://service.seamlessaccess.org/ds/"
