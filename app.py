@@ -53,6 +53,7 @@ def status():
 
 
 @app.route('/', methods=['GET'])
+@app.route('/<path:subpath>', methods=['GET'])
 def index():
     disco_url = "https://service.seamlessaccess.org/ds/"
     disco_url += f"?entityID=https%3A%2F%2Fidp-proxy.{domain}%2Fsp&return="
@@ -63,8 +64,3 @@ def index():
         return redirect(disco_url)
     else:
         return redirect(map_entity(entityID))
-
-
-@app.errorhandler(200)
-def page_not_found(e):
-    return redirect('/')
