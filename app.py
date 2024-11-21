@@ -52,7 +52,6 @@ def status():
                                mimetype='application/json')
 
 
-@app.route('/index.php')
 @app.route('/', methods=['GET'])
 def index():
     disco_url = "https://service.seamlessaccess.org/ds/"
@@ -64,3 +63,8 @@ def index():
         return redirect(disco_url)
     else:
         return redirect(map_entity(entityID))
+
+
+@app.errorhandler(200)
+def page_not_found(e):
+    return redirect('/')
