@@ -52,6 +52,7 @@ def status():
                                mimetype='application/json')
 
 
+@app.route('/index.php')
 @app.route('/', methods=['GET'])
 def index():
     disco_url = "https://service.seamlessaccess.org/ds/"
