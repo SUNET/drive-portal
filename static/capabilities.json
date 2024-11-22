@@ -15,10 +15,6 @@
         "extendedSupport": false
       },
       "capabilities": {
-        "globalscale": {
-          "enabled": true,
-          "desktoplogin": 1
-        },
         "theming": {
           "name": "Sunet Drive",
           "url": "https://sunet.se",
