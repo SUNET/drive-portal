@@ -1,3 +1,41 @@
 {
-  "message": "CSRF check failed"
+  "ocs": {
+    "meta": {
+      "status": "ok",
+      "statuscode": 200,
+      "message": "OK"
+    },
+    "data": {
+      "version": {
+        "major": 29,
+        "minor": 0,
+        "micro": 8,
+        "string": "29.0.8 Enterprise",
+        "edition": "",
+        "extendedSupport": false
+      },
+      "capabilities": {
+        "globalscale": {
+          "enabled": true,
+          "desktoplogin": 1
+        },
+        "theming": {
+          "name": "Sunet Drive",
+          "url": "https://sunet.se",
+          "slogan": "a safe home for all your data",
+          "color": "#00679e",
+          "color-text": "#ffffff",
+          "color-element": "#00679e",
+          "color-element-bright": "#00679e",
+          "color-element-dark": "#00679e",
+          "logo": "https://sunet.drive.sunet.se/core/img/logo/logo-enterprise.svg?v=3",
+          "background": "#00679e",
+          "background-plain": true,
+          "background-default": true,
+          "logoheader": "https://sunet.drive.sunet.se/core/img/logo/logo-enterprise.svg?v=3",
+          "favicon": "https://sunet.drive.sunet.se/core/img/logo/logo-enterprise.svg?v=3"
+        }
+      }
+    }
+  }
 }
