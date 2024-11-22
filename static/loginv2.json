@@ -1,0 +1,7 @@
+{
+  "poll": {
+    "token": "u3Ydx5dDGzYfxDo1dcvEpbVXZLyzUs5h1j0TrM8bwVsgpSk1OPH4RJN6496JMM63WiI7Z5enon6XZkU0zl2YhQlryikPDxbd8W996kkcNQXujmcRjPXfqw8VZXcbraYz",
+    "endpoint": "https://drive.test.sunet.se/index.php/login/v2/poll"
+  },
+  "login": "https://drive.test.sunet.se/index.php/login/v2/flow/MIOYQTeK2uaxVjdpdrjWc53N8q4hiC9oQcgGznKC8wQ8wh7Siu7kxuBC5hL17smJJWnSweY7vMZJVhePPsGs2rrDO2GIlLaEvDfSQhJc4gQ2KUIsxZTBZV0Ax05QUThs"
+}

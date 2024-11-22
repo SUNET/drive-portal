@@ -59,6 +59,13 @@ def capabilities():
                                mimetype='application/json')
 
 
+@app.route('/index.php/login/v2')
+def login():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'loginv2.json',
+                               mimetype='application/json')
+
+
 @app.route('/', methods=['GET'])
 def index():
     disco_url = "https://service.seamlessaccess.org/ds/"
