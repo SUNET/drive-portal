@@ -59,7 +59,8 @@ def capabilities():
                                mimetype='application/json')
 
 
-@app.route('/index.php/login/v2')
+@app.route('/login/v2')
+@app.route('/index.php/login/v2', methods=['POST'])
 def login():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'loginv2.json',
