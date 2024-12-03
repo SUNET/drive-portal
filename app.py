@@ -48,7 +48,10 @@ def favicon():
 @app.route('/', methods=['GET'])
 def index():
     disco_url = "https://service.seamlessaccess.org/ds/"
-    disco_url += f"?entityID=https%3A%2F%2Fidp-proxy.{domain}%2Fsp&return="
+    if domain == 'drive.test.sunet.se':
+        disco_url += f"?entityID=https%3A%2F%2Fidp-proxy.{domain}%2Fsp&return="
+    else:
+        disco_url += f"?entityID=https%3A%2F%2Fdrive-idp-proxy.sunet.se%2Fsp&return="
     disco_url += f"https%3A%2F%2F{domain}"
 
     entityID = request.args.get('entityID')
